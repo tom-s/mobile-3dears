@@ -12,7 +12,7 @@
   },
   "scripts": {
     "dev": "npm run server:dev & npm run front:dev",
-    "server:dev": "nodemon --watch api/src/ api/src/server.js --exec babel-node",
+    "server:dev": "`npm bin`/nodemon --watch api/src/ api/src/server.js --exec babel-node",
     "server:build": "babel lib -d dist",
     "front:build": "`npm bin`/webpack",
     "front:dev": "`npm bin`/webpack-dev-server",
