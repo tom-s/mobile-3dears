@@ -2,9 +2,8 @@
 
 ## Docs
 
+This boilerplate is built from the following post, thanks to [http://blog.joanboixados.com/] ! 
 [Detailed blogpost on how was this boilerplate built](http://blog.joanboixados.com/building-a-boilerplate-for-a-koa-redux-react-application-including-webpack-mocha-and-sass/)
-
-Good to understand what's what.
 
 ## Instructions
 
