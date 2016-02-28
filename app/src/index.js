@@ -7,7 +7,6 @@ import Root from './containers/Root';
 import configureStore from './store/configureStore';
 
 const store = configureStore();
-console.log("brwoser ", browserHistory);
 
 const history = syncHistoryWithStore(browserHistory, store);
 

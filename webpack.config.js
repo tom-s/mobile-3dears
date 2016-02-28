@@ -7,27 +7,30 @@ const ROOT_PATH = path.resolve(__dirname);
 module.exports = {
   devtool: process.env.NODE_ENV === 'production' ? '' : 'source-map',
   entry: [
-    'webpack-hot-middleware/client',
-    path.resolve(ROOT_PATH,'src/index')
+    path.resolve(ROOT_PATH,'app/src/index')
   ],
   module: {
-    /*
     preLoaders: [
       {
-        test: /\.jsx|js?$/,
+        test: /\.jsx?$/,
         loaders: process.env.NODE_ENV === 'production' ? [] : ['eslint'],
-        include: path.resolve(ROOT_PATH)
+        include: path.resolve(ROOT_PATH, 'app')
+      },
+      {
+        test: /\.js?$/,
+        loaders: process.env.NODE_ENV === 'production' ? [] : ['eslint'],
+        include: path.resolve(ROOT_PATH, 'app')
       }
-    ],*/
+    ],
     loaders: [{
       test: /\.jsx?$/,
       exclude: /node_modules/,
-      loaders: ['babel']
+      loaders: ['react-hot', 'babel']
     },
     {
       test: /\.js?$/,
       exclude: /node_modules/,
-      loaders: ['babel']
+      loaders: ['react-hot', 'babel']
     },
     {
       test: /\.scss$/,
@@ -38,20 +41,25 @@ module.exports = {
     extensions: ['', '.js', '.jsx']
   },
   output: {
-    path: path.resolve(ROOT_PATH,'dist'),
+    path: process.env.NODE_ENV === 'production' ? path.resolve(ROOT_PATH, 'app/dist') : path.resolve(ROOT_PATH, 'app/build'),
+    publicPath: '/',
     filename: 'bundle.js',
-    publicPath: '/static/'
   },
-  eslint: {
-    configFile: '.eslintrc'
+  devServer: {
+    contentBase: path.resolve(ROOT_PATH, 'app/build'),
+    historyApiFallback: true,
+    hot: true,
+    inline: true,
+    progress: true
   },
+
   plugins: [
     //new ExtractTextPlugin("[name].css"),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
-    /*new HtmlwebpackPlugin({
+    new webpack.NoErrorsPlugin(),
+    new HtmlwebpackPlugin({
       title: 'React BoilerPlate'
-    })*/
+    })
   ]
 };
