@@ -5,7 +5,7 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const ROOT_PATH = path.resolve(__dirname);
 
 module.exports = {
-  devtool: process.env.NODE_ENV === 'production' ? '' : 'source-map',
+  devtool: process.env.NODE_ENV === 'production' ? '' : 'eval',
   entry: [
     path.resolve(ROOT_PATH,'app/src/index')
   ],
@@ -59,7 +59,9 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
     new HtmlwebpackPlugin({
-      title: 'React BoilerPlate'
+      title: 'Custom template',
+      template: 'app/index.ejs', // Load a custom template 
+      inject: 'body' // Inject all scripts into the body 
     })
   ]
 };

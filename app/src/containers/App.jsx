@@ -14,7 +14,6 @@ class App extends Component {
 
   render() {
     const { children } = this.props;
-    console.log("here", children);
     return (
       <div>
         {children}
