@@ -12,7 +12,6 @@ export default class Root extends Component {
       <Provider store={store}>
         <div>
           <Router history={history} routes={routes}/>
-          HOURRA
           <DevTools />
         </div>
       </Provider>
