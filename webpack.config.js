@@ -5,7 +5,7 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const ROOT_PATH = path.resolve(__dirname);
 
 module.exports = {
-  devtool: process.env.NODE_ENV === 'production' ? '' : 'eval',
+  devtool: process.env.NODE_ENV === 'production' ? '' : 'eval', // we should try some others (cheap-eval-source-map)
   entry: [
     path.resolve(ROOT_PATH,'app/src/index')
   ],

@@ -10,7 +10,7 @@ Good to understand what's what.
 
 1. **Clone repo**
 
-    git clone https://github.com/mezod/boilerplate-koa-redux-react.git
+    git clone https://github.com/tom-s/3d-ears
 
 2. **Install dependencies**
 
