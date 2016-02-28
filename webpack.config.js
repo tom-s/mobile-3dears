@@ -1,25 +1,33 @@
 const webpack = require('webpack');
 const path = require('path');
 const HtmlwebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const ROOT_PATH = path.resolve(__dirname);
 
 module.exports = {
   devtool: process.env.NODE_ENV === 'production' ? '' : 'source-map',
   entry: [
-    path.resolve(ROOT_PATH,'app/src/index')
+    'webpack-hot-middleware/client',
+    path.resolve(ROOT_PATH,'src/index')
   ],
   module: {
+    /*
     preLoaders: [
       {
-        test: /\.jsx?$/,
+        test: /\.jsx|js?$/,
         loaders: process.env.NODE_ENV === 'production' ? [] : ['eslint'],
-        include: path.resolve(ROOT_PATH, './app')
+        include: path.resolve(ROOT_PATH)
       }
-    ],
+    ],*/
     loaders: [{
       test: /\.jsx?$/,
       exclude: /node_modules/,
-      loaders: ['react-hot', 'babel']
+      loaders: ['babel']
+    },
+    {
+      test: /\.js?$/,
+      exclude: /node_modules/,
+      loaders: ['babel']
     },
     {
       test: /\.scss$/,
@@ -30,21 +38,20 @@ module.exports = {
     extensions: ['', '.js', '.jsx']
   },
   output: {
-    path: process.env.NODE_ENV === 'production' ? path.resolve(ROOT_PATH, 'app/dist') : path.resolve(ROOT_PATH, 'app/build'),
-    publicPath: '/',
+    path: path.resolve(ROOT_PATH,'dist'),
     filename: 'bundle.js',
+    publicPath: '/static/'
   },
-  devServer: {
-    contentBase: path.resolve(ROOT_PATH, 'app/build'),
-    historyApiFallback: true,
-    hot: true,
-    inline: true,
-    progress: true
+  eslint: {
+    configFile: '.eslintrc'
   },
   plugins: [
+    //new ExtractTextPlugin("[name].css"),
+    new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    new HtmlwebpackPlugin({
+    new webpack.NoErrorsPlugin()
+    /*new HtmlwebpackPlugin({
       title: 'React BoilerPlate'
-    })
+    })*/
   ]
 };

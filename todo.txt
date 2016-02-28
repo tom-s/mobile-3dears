@@ -1,0 +1,5 @@
+- faire fonctionner webpack
+- faire fonctionner app
+- tenter isomorphic ?
+- do static routes with server rendering and redux
+- implement authentication
