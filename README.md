@@ -32,10 +32,6 @@ Good to understand what's what.
 
    Development server should be running at http://localhost:8080/
 
-## Real project using this boilerplate
-
-[www.listlogs.com](http://www.listlogs.com)
-
 ## Scripts
 - **npm run webserver**
 
