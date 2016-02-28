@@ -16,7 +16,7 @@
     "dev": "node_modules/.bin/webpack-dev-server",
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js 'test/**/*.@(js|jsx)'",
     "test:watch": "npm run test -- --watch",
-    "lint": "eslint . --ext .js --ext .jsx"
+    "lint": "node_modules/.bin/eslint . --ext .js --ext .jsx"
   },
   "repository": {
     "type": "git",
