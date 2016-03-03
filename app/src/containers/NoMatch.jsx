@@ -1,5 +1,5 @@
-import React, { Component, PropTypes } from 'react';
-import { connect } from 'react-redux';
+import React, { Component, PropTypes } from 'react'
+import { connect } from 'react-redux'
 
 class NoMatch extends Component {
 
@@ -8,13 +8,13 @@ class NoMatch extends Component {
       <div>
         404 error
       </div>
-    );
+    )
   }
 }
 
 function mapStateToProps(state) {
   return {
-  };
+  }
 }
 
-export default connect(mapStateToProps)(NoMatch);
+export default connect(mapStateToProps)(NoMatch)

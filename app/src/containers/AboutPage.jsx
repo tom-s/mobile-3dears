@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
 class AboutPage extends Component {
   render() {
@@ -7,14 +7,14 @@ class AboutPage extends Component {
       <div>
         about page
       </div>
-    );
+    )
   }
 }
 
 function mapStateToProps(state) {
   return {
     errorMessage: state.errorMessage
-  };
+  }
 }
 
-export default connect(mapStateToProps)(AboutPage);
+export default connect(mapStateToProps)(AboutPage)
