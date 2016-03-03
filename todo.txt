@@ -1,3 +1,3 @@
-- tenter isomorphic ?
-- do static routes with server rendering and redux
 - faire page de login
+- faire génération de token
+- faire bearer strategy

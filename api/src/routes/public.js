@@ -11,7 +11,6 @@ publicRouter.get('/public', function*() {
 publicRouter.post('/login', function*() {
   const ctx = this
   yield passport.authenticate('local', function*(err, user, info) {
-    console.log('res', user, info)
     if (err) throw err
     if (!user) {
       ctx.status = 401
