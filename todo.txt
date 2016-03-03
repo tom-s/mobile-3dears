@@ -1,3 +1,7 @@
+PRIORITAIRE
 - faire page de login
+- ajouter routes about etc
+
+NORMAL
 - faire génération de token
-- faire bearer strategy
+- faire passport bearer strategy
