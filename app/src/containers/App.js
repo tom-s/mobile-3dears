@@ -1,37 +1,14 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { browserHistory } from 'react-router'
+import App from '../components/App'
 
-class App extends Component {
-  constructor(props) {
-    super(props)
-    this.handleChange = this.handleChange.bind(this)
-  }
+const mapDispatchToProps = (dispatch) => ({})
 
-  handleChange(nextValue) {
-    browserHistory.push(`/${nextValue}`)
-  }
-
-  render() {
-    const { children } = this.props
-    return (
-      <div>
-        {children}
-      </div>
-    )
-  }
+const mapStateToProps = (state, ownProps) => {
+  console.log('state', state, ownProps)
+  return {}
 }
 
-App.propTypes = {
-  // Injected by React Redux
-  // Injected by React Router
-  children: PropTypes.node
-}
+const AppContainer = connect(mapStateToProps)(App)
 
-function mapStateToProps(state) {
-  return {
-    errorMessage: state.errorMessage
-  }
-}
-
-export default connect(mapStateToProps)(App)
+export default AppContainer
