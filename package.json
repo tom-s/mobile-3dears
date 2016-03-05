@@ -13,8 +13,8 @@
   "scripts": {
     "server:dev": "`npm bin`/nodemon --watch api/src/ api/src/server.js --exec 'npm run lint && npm run server:babel'",
     "server:babel": "babel-node",
-    "build": "node_modules/.bin/webpack",
-    "dev": "node_modules/.bin/webpack-dev-server",
+    "front:build": "node_modules/.bin/webpack",
+    "front:dev": "node_modules/.bin/webpack-dev-server",
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js 'test/**/*.@(js|jsx)'",
     "test:watch": "npm run test -- --watch",
     "lint": "node_modules/.bin/eslint . --ext .js --ext .jsx --fix"
