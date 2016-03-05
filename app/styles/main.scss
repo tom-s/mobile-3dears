@@ -1,5 +1,10 @@
 @import './variables';
 
-/* Components */
+@import './app';
+
+/* Common components */
 @import './header';
 @import './footer';
+
+/* Components */
+@import './pricing';

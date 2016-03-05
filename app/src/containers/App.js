@@ -5,7 +5,6 @@ import App from '../components/App'
 const mapDispatchToProps = (dispatch) => ({})
 
 const mapStateToProps = (state, ownProps) => {
-  console.log('state', state, ownProps)
   return {}
 }
 
