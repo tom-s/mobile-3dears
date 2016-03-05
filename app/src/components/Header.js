@@ -1,43 +1,36 @@
 import React from 'react'
 
+// Components
+import NavBarRight from './header/NavBarRight'
+import NavBarRightLoggedIn from './header/NavBarRightLoggedIn'
+
+// Assets
+import logo from '../../images/logo.png'
+
 const Header = (props) => {
+  const { loggedIn } = props
+  const headerLinks = (loggedIn) ? (<NavBarRightLoggedIn />) : (<NavBarRight />)
+
   return (
-    <nav class="navbar navbar-default navbar-static-top">
-   
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
+    <nav className="Header navbar navbar-default navbar-static-top">
+      <div className="HeaderContainer container">
+        <div className="NavBarHeader navbar-header">
+          <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span className="sr-only">Toggle navigation</span>
+            <span className="icon-bar"></span>
+            <span className="icon-bar"></span>
+            <span className="icon-bar"></span>
           </button>
-          <a class="navbar-brand em-text" href="/">
-            <img alt="3D Ears" src="/images/logo.png"> 
+          <a className="navbar-brand em-text" href="/">
+            <img alt="3D Ears" className="Logo" src={logo} />
           </a>
-          </div>
-
-          <div id="navbar" class="collapse navbar-collapse">
-            <ul class="nav navbar-nav navbar-right">
-             
-            {/*
-              <li><a href="/pricing">Pricing</a></li>
-              <li><a href="/exercises">Dashboard</a></li>
-              <li><a href="/logout">Log out</a></li>
-
-            {{else}}
-              <li><a href="/exercises">Exercises</a></li>
-              <li><a href="/pricing">Pricing</a></li>
-              <li><a href="/sign_up">Create Account</a></li>
-              <li><a href="/sign_in">Sign in</a></li>
-
-            */}
-            </ul>
-          </div>
+        </div>
+        <div id="navbar" className="NavBarCollapse collapse navbar-collapse">
+          {headerLinks}
         </div>
       </div>
     </nav>
-  );
+  )
 }
 
 export default Header
