@@ -1,0 +1,50 @@
+.Footer {
+  position: absolute;
+  height: 80px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: auto;
+  width: 100%;
+  margin: 0;
+  background-color: #2F3B42;
+  color: rgba(228,228,228,1.00);
+  padding: 30px 0 20px 0;
+  text-align: left;
+  transform: translateZ(0);
+
+  .Copyright {
+    float:right;
+  }
+
+  .FooterLink {
+    list-style:none;
+    padding: 0 10px 0 10px;
+    float:left;
+
+    .Link {
+      text-decoration: none;
+      color: #7D8C9A;
+
+      &:hover {
+        color:white;
+      }
+    }
+  }
+}
+
+
+@media (max-width: 767px) {
+  .Footer {
+    text-align:left;
+
+    .FooterLink {
+      float:none;
+    }
+
+    .Copyright {
+      float:none;
+      text-align:center;
+    }
+  }
+}
