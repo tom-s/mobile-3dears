@@ -1,6 +1,5 @@
 TODO
-- ajouter header
-- ajouter footer
+- faire pricing
 - faire signup
 - faire signin
 

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router'
 
 // Components
 import NavBarRight from './header/NavBarRight'
@@ -21,9 +22,9 @@ const Header = (props) => {
             <span className="icon-bar"></span>
             <span className="icon-bar"></span>
           </button>
-          <a className="navbar-brand em-text" href="/">
+          <Link className="navbar-brand em-text" to="/">
             <img alt="3D Ears" className="Logo" src={logo} />
-          </a>
+          </Link>
         </div>
         <div id="navbar" className="NavBarCollapse collapse navbar-collapse">
           {headerLinks}
