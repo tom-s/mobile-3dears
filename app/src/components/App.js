@@ -1,4 +1,4 @@
-// import css from "../../styles/main.scss"
+import '../../styles/main.scss'
 
 import React from 'react'
 
