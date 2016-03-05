@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router'
 
 const Pricing = (props) => {
   return (
@@ -21,7 +22,7 @@ const Pricing = (props) => {
               </ul>
             </div>
             <div className="Pricing_footer col-xs-12">
-              <a href="/sign_up" className="btn btn-danger btn-join">Sign up</a>
+              <Link to="/sign_up" className="btn btn-danger btn-join">Sign up</Link>
             </div>
           </div>
         </div>
