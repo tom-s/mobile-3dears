@@ -39,7 +39,7 @@ app.use(publicRouter.routes())
 // secured
 app.use(securedRouter.routes())
 
-/* Init */
+/* Default (should be 404) */
 app.use(function *() {
 	// Ignore favicon
   if (this.path === '/favicon.ico') return

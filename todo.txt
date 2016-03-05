@@ -1,6 +1,9 @@
-PRIORITAIRE
+CE WE
 - faire page de login
-- ajouter routes about etc
+- relier login à mongo
+- ajouter routes about etc (ajouter polymorphisme)
+- faire redux saga pour le login + cookie auth
+
 
 NORMAL
 - faire génération de token
