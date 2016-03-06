@@ -51,7 +51,7 @@ module.exports = {
       { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=image/svg+xml' },
 
       // Images loader
-      { test: /\.(jpe?g|png|gif)$/i, loader: 'url?limit=10000'}
+      { test: /\.(jpe?g|png|gif)$/i, loader: 'url?limit=10000' }
     ]},
   resolve: {
     extensions: ['', '.js', '.jsx']

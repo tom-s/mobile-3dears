@@ -3,7 +3,6 @@ import SignInForm from './signIn/form'
 
 const SignIn = (props) => {
   const { onSubmit } = props
-  console.log('handleSubmit', onSubmit)
 
   return (
     <section className="SignIn">

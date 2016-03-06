@@ -1,8 +1,9 @@
 import koa from 'koa'
 import logger from 'koa-logger'
 import session from 'koa-session'
-import passport from './auth'
+import cors from 'koa-cors'
 import bodyParser from 'koa-bodyparser'
+import passport from './auth'
 
 // Routes
 import publicRouter from './routes/public'
@@ -15,12 +16,10 @@ const app = koa()
 // Logger
 app.use(logger())
 
-/*
-// (guest) Session
-app.keys = ['3dearskey']
-app.use(session(app))*/
+// Cors
+app.use(cors())
 
-// sessions
+// Sessions
 app.keys = ['your-session-secret']
 app.use(session(app))
 
@@ -35,7 +34,6 @@ app.use(passport.session())
 // public
 app.use(publicRouter.routes())
 
-
 // secured
 app.use(securedRouter.routes())
 
@@ -47,6 +45,5 @@ app.use(function *() {
   // Body
   this.body = 'Hello from koajs'
 })
-
 
 app.listen(3000)

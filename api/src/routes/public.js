@@ -1,5 +1,8 @@
 import Router from 'koa-router'
 import passport from '../auth'
+import jwt from 'jsonwebtoken'
+
+const TOKEN_SECRET = 'thisissecret'
 
 const publicRouter = new Router()
 
@@ -16,9 +19,14 @@ publicRouter.post('/login', function *() {
       ctx.status = 401
       ctx.body = { success: false }
     } else {
-      yield ctx.login(user)
-      ctx.body = { success: true }
-      ctx.session.maxAge = (10 * 365 * 24 * 60 * 60) // 10 years
+      // create a token
+      const token = jwt.sign(user, TOKEN_SECRET, {
+        expiresInMinutes: 1440 * 30 // expires in 30 days
+      })
+      ctx.body = {
+        success: true,
+        token: token
+      }
     }
   })
 })

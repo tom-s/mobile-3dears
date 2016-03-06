@@ -1,10 +1,11 @@
 import { connect } from 'react-redux'
 import SignIn from '../../components/SignIn'
+import {SIGNIN_REQUEST} from '../../actions/signIn'
 
 const mapDispatchToProps = (dispatch) => {
   return {
     onSubmit: (values) => {
-      console.log('handle submit', values)
+      dispatch({ type: SIGNIN_REQUEST, payload: values })
     }
   }
 }

@@ -19,5 +19,4 @@ securedRouter.get('/app', authed, function *() {
   this.body = body
 })
 
-
 export default securedRouter
