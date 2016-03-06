@@ -1,6 +1,6 @@
 { 
   "parser": "babel-eslint",
-  "extends": "eslint-config-airbnb",
+  "extends": "standard",
   "env": {
     "browser": true,
     "node": true,
@@ -15,7 +15,8 @@
     "no-console": 0,
     "arrow-body-style": [0],
     "react/prop-types": [0],
-    "max-len": [2, {"code": 200, "tabWidth": 2, "ignoreUrls": true}]
+    "max-len": [2, {"code": 200, "tabWidth": 2, "ignoreUrls": true}],
+    "jsx-quotes": [2, "prefer-double"]
   },
   "plugins": [
     "react"

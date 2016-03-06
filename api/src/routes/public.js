@@ -3,14 +3,14 @@ import passport from '../auth'
 
 const publicRouter = new Router()
 
-publicRouter.get('/public', function*() {
+publicRouter.get('/public', function *() {
   const body = 'Public Zone: koa'
   this.body = body
 })
 
-publicRouter.post('/login', function*() {
+publicRouter.post('/login', function *() {
   const ctx = this
-  yield passport.authenticate('local', function*(err, user, info) {
+  yield passport.authenticate('local', function *(err, user, info) {
     if (err) throw err
     if (!user) {
       ctx.status = 401

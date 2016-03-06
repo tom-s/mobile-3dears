@@ -1,13 +1,13 @@
-const webpack = require('webpack');
-const path = require('path');
-const HtmlwebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack')
+const path = require('path')
+const HtmlwebpackPlugin = require('html-webpack-plugin')
 
 // Config
-const ROOT_PATH = path.resolve(__dirname) + '/../app/';
-const ASSETS_PATHS = ROOT_PATH + 'static/dist/';
-const NODE_MODULES_PATH = ROOT_PATH + '../node_modules';
-const HOST = 'localhost';
-const PORT = 8080;
+const ROOT_PATH = path.resolve(__dirname) + '/../app/'
+const ASSETS_PATHS = ROOT_PATH + 'static/dist/'
+const NODE_MODULES_PATH = ROOT_PATH + '../node_modules'
+const HOST = 'localhost'
+const PORT = 8080
 
 module.exports = {
   devtool: 'cheap-eval-source-map',
@@ -41,18 +41,18 @@ module.exports = {
 
       {
         test: /\.scss$/,
-        loader: "style!css!sass?outputStyle=expanded=includePaths[]=" + NODE_MODULES_PATH + "bootstrap-sass/assets/stylesheets/"
+        loader: 'style!css!sass?outputStyle=expanded=includePaths[]=' + NODE_MODULES_PATH + 'bootstrap-sass/assets/stylesheets/'
       },
       // Font loader
-      { test: /\.woff(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/font-woff" },
-      { test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/font-woff" },
-      { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/octet-stream" },
-      { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: "file" },
-      { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=image/svg+xml" },
+      { test: /\.woff(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=application/font-woff' },
+      { test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=application/font-woff' },
+      { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=application/octet-stream' },
+      { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: 'file' },
+      { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=image/svg+xml' },
 
       // Images loader
-      { test: /\.(jpe?g|png|gif)$/i,  loader: 'url?limit=10000'}
-  ]},
+      { test: /\.(jpe?g|png|gif)$/i, loader: 'url?limit=10000'}
+    ]},
   resolve: {
     extensions: ['', '.js', '.jsx']
   },
@@ -70,8 +70,8 @@ module.exports = {
     new webpack.NoErrorsPlugin(),
     new HtmlwebpackPlugin({
       title: 'Custom template',
-      template: 'app/index.ejs', // Load a custom template 
-      inject: 'body' // Inject all scripts into the body 
+      template: 'app/index.ejs', // Load a custom template
+      inject: 'body' // Inject all scripts into the body
     })
   ]
-};
+}

@@ -3,7 +3,7 @@ import Router from 'koa-router'
 const securedRouter = new Router()
 
 // Middleware: authed
-function *authed(next) {
+function * authed (next) {
   if (this.req.isAuthenticated()) {
     yield next
   } else {

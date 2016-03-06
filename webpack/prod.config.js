@@ -1,13 +1,13 @@
-const webpack = require('webpack');
-const path = require('path');
-const HtmlwebpackPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const ROOT_PATH = path.resolve(__dirname) + '/../app/';
-console.log("root path", ROOT_PATH);
-const node_modules = path.resolve(__dirname, 'node_modules');
-const assetsPath = path.resolve(__dirname, 'app/static/dist');
-const host = 'localhost';
-const port = 8080;
+const webpack = require('webpack')
+const path = require('path')
+const HtmlwebpackPlugin = require('html-webpack-plugin')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const ROOT_PATH = path.resolve(__dirname) + '/../app/'
+console.log('root path', ROOT_PATH)
+const node_modules = path.resolve(__dirname, 'node_modules')
+const assetsPath = path.resolve(__dirname, 'app/static/dist')
+const host = 'localhost'
+const port = 8080
 
 module.exports = {
   devtool: process.env.NODE_ENV === 'production' ? '' : 'eval', // we should try some others (cheap-eval-source-map)
@@ -15,7 +15,7 @@ module.exports = {
     'main': [
       'bootstrap-sass!' + ROOT_PATH + 'styles/bootstrap.config.js',
       'font-awesome-webpack!' + ROOT_PATH + 'styles/font-awesome.config.js',
-      path.resolve(ROOT_PATH,'src/index')
+      path.resolve(ROOT_PATH, 'src/index')
     ]
   },
   output: {
@@ -40,13 +40,13 @@ module.exports = {
 
     {
       test: /\.scss$/,
-      loader: ExtractTextPlugin.extract('style-loader',"style!css!sass?outputStyle=expanded=includePaths[]=" + node_modules + "/bootstrap-sass/assets/stylesheets/")
+      loader: ExtractTextPlugin.extract('style-loader','style!css!sass?outputStyle=expanded=includePaths[]=' + node_modules + '/bootstrap-sass/assets/stylesheets/')
     },
-    { test: /\.woff(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/font-woff" },
-    { test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/font-woff" },
-    { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/octet-stream" },
-    { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: "file" },
-    { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=image/svg+xml" },
+    { test: /\.woff(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=application/font-woff' },
+    { test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=application/font-woff' },
+    { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=application/octet-stream' },
+    { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: 'file' },
+    { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=image/svg+xml' },
   ]},
   resolve: {
     extensions: ['', '.js', '.jsx']
@@ -60,7 +60,7 @@ module.exports = {
   },
 
   plugins: [
-    new ExtractTextPlugin("[name].css?[hash]-[chunkhash]-[contenthash]-[name]", {
+    new ExtractTextPlugin('[name].css?[hash]-[chunkhash]-[contenthash]-[name]', {
       disable: false,
       allChunks: true
     }),
@@ -69,8 +69,8 @@ module.exports = {
     new webpack.NoErrorsPlugin(),
     new HtmlwebpackPlugin({
       title: 'Custom template',
-      template: 'app/index.ejs', // Load a custom template 
-      inject: 'body' // Inject all scripts into the body 
+      template: 'app/index.ejs', // Load a custom template
+      inject: 'body' // Inject all scripts into the body
     })
   ]
-};
+}

@@ -1,6 +1,5 @@
 TODO
-- faire pricing
-- faire signup
+- faire signup avec redux-form
 - faire signin
 
 

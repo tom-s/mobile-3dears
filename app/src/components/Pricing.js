@@ -6,7 +6,7 @@ const Pricing = (props) => {
     <section className="Pricing">
       <div className="container">
         <h2 className="Title">Join today for a one-time price</h2>
-        <div className="row ">
+        <div className="row">
           <div className="Pricing_box">
             <div className="Pricing_header col-xs-12">
               <div className="Price_text"><span className="Currency">$</span><span className="Amount">12</span></div>
