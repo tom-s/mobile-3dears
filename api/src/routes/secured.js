@@ -1,22 +1,29 @@
 import Router from 'koa-router'
+import passport from 'passport'
 
 const securedRouter = new Router()
 
-// Middleware: authed
-function * authed (next) {
-  if (this.req.isAuthenticated()) {
+const authed = function *(next) {
+  var ctx = this
+  try {
+    yield passport.authenticate('bearer', { session: false }, function * (err, user, info) {
+      if (err) throw err
+      ctx.body = {
+        user: {
+          id: user.id
+        }
+      }
+    })
     yield next
-  } else {
-    // this.session.returnTo = this.session.returnTo || this.req.url/ Set redirect path in session
-    this.redirect('/login')
+  } catch (err) {
+    ctx.status = 401
   }
 }
 
 // Routes
 securedRouter.get('/app', authed, function *() {
-  const request = JSON.stringify(this.req.user, null, '\t')
-  const body = `Secured Zone: koa-tutorial\n${request}`
-  this.body = body
+  const body = { data: 'Secured Zone: koa-tutorial' }
+  this.body = Object.assign({}, this.body, body)
 })
 
 export default securedRouter

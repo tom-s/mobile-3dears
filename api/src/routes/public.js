@@ -1,8 +1,9 @@
 import Router from 'koa-router'
 import passport from '../auth'
 import jwt from 'jsonwebtoken'
+import CONF from '../../config/conf'
 
-const TOKEN_SECRET = 'thisissecret'
+const TOKEN_EXPIRE_DURATION = 1440 * 30 // 30 days'
 
 const publicRouter = new Router()
 
@@ -13,19 +14,22 @@ publicRouter.get('/public', function *() {
 
 publicRouter.post('/login', function *() {
   const ctx = this
-  yield passport.authenticate('local', function *(err, user, info) {
+  yield passport.authenticate('local', { session: false }, function * (err, user, info) {
     if (err) throw err
     if (!user) {
       ctx.status = 401
       ctx.body = { success: false }
     } else {
       // create a token
-      const token = jwt.sign(user, TOKEN_SECRET, {
-        expiresInMinutes: 1440 * 30 // expires in 30 days
+      const token = jwt.sign(user, CONF.TOKEN_SECRET, {
+        expiresInMinutes: TOKEN_EXPIRE_DURATION
       })
       ctx.body = {
         success: true,
-        token: token
+        user: {
+          token: token,
+          id: user.id
+        }
       }
     }
   })

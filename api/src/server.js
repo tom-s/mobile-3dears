@@ -4,6 +4,7 @@ import session from 'koa-session'
 import cors from 'koa-cors'
 import bodyParser from 'koa-bodyparser'
 import passport from './auth'
+import CONF from '../config/conf'
 
 // Routes
 import publicRouter from './routes/public'
@@ -20,7 +21,7 @@ app.use(logger())
 app.use(cors())
 
 // Sessions
-app.keys = ['your-session-secret']
+app.keys = [CONF.SESSION_SECRET]
 app.use(session(app))
 
 // body parser
@@ -28,7 +29,7 @@ app.use(bodyParser())
 
 // Auth
 app.use(passport.initialize())
-app.use(passport.session())
+// app.use(passport.session())
 
 /* Routing */
 // public

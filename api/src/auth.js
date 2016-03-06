@@ -1,6 +1,8 @@
 import passport from 'koa-passport'
 import passportLocal from 'passport-local'
 import passportBearer from 'passport-http-bearer'
+import jwt from 'jsonwebtoken'
+import CONF from '../config/conf'
 
 const LocalStrategy = passportLocal.Strategy
 const BearerStrategy = passportBearer.Strategy
@@ -40,6 +42,13 @@ passport.use(new LocalStrategy((username, password, done) => {
  * the authorizing user.
  */
 passport.use(new BearerStrategy((accessToken, done) => {
+  console.log('check access token', accessToken)
+  jwt.verify(accessToken, CONF.TOKEN_SECRET, (err, decoded) => {
+    if (err) { return done(err) }
+    console.log('decoded', decoded)
+    done(null, decoded, { scope: 'all' })
+  })
+
   /*
   db.accessTokens.find(accessToken, function (err, token) {
     if (err) { return done(err) }
@@ -53,17 +62,6 @@ passport.use(new BearerStrategy((accessToken, done) => {
               // and this is just for illustrative purposes
         var info = { scope: '*' }
         done(null, user, info)
-      })
-    } else {
-          // The request came from a client only since userID is null
-          // therefore the client is passed back instead of a user
-      db.clients.findByClientId(token.clientID, function (err, client) {
-        if (err) { return done(err) }
-        if (!client) { return done(null, false) }
-              // to keep this example simple, restricted scopes are not implemented,
-              // and this is just for illustrative purposes
-        var info = { scope: '*' }
-        done(null, client, info)
       })
     }
   })*/

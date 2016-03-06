@@ -1,9 +1,10 @@
 TODO
+- faire génération de token
+- faire passport bearer strategy
 - faire signup avec redux-form
-- faire signin
+- faire signin avec redux-form
+- connecter signup & signin
 
 
 NORMAL
-- faire génération de token
-- faire passport bearer strategy
-- ajouter routes about etc (ajouter polymorphisme)
+- ajouter polymorphisme
