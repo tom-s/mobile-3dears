@@ -7,15 +7,15 @@ let SignInForm = (props) => {
 
   return (
     <form className="Form" onSubmit={handleSubmit}>
-      <fieldset class="form-group">
-        <label for="email" class="pull-left">Email</label>
+      <fieldset className="form-group">
+        <label for="email" className="pull-left">Email</label>
         <input type="text" className="form-control" placeholder="Email" {...email}/>
       </fieldset>
-      <fieldset class="form-group">
-        <label for="password" class="pull-left">Password</label>
+      <fieldset className="form-group">
+        <label for="password" className="pull-left">Password</label>
         <input type="password" className="form-control" placeholder="Password" {...password}/>
       </fieldset>
-      <button className="Submit btn btn-signin" type="submit" value="Sign In">Sign in</button>
+      <button className="Submit btn btn-signin" value="Sign In">Sign in</button>
       <Link className="PasswordForgotten" to="/forgot">Forgot Password?</Link>
     </form>
   )
