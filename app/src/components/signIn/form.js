@@ -6,7 +6,7 @@ let SignInForm = (props) => {
   const { fields: { email, password }, handleSubmit } = props
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="Form" onSubmit={handleSubmit}>
       <fieldset class="form-group">
         <label for="email" class="pull-left">Email</label>
         <input type="text" className="form-control" placeholder="Email" {...email}/>
@@ -15,8 +15,8 @@ let SignInForm = (props) => {
         <label for="password" class="pull-left">Password</label>
         <input type="password" className="form-control" placeholder="Password" {...password}/>
       </fieldset>
-      <button id="account-submit" type="submit" value="Sign In" class="btn btn-signin" />
-      <Link className="pw-forgot" to="/forgot">Forgot Password?</Link>
+      <button className="Submit btn btn-signin" type="submit" value="Sign In">Sign in</button>
+      <Link className="PasswordForgotten" to="/forgot">Forgot Password?</Link>
     </form>
   )
 }
