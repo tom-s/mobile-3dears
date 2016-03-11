@@ -8,6 +8,7 @@ const authed = function *(next) {
   try {
     yield passport.authenticate('bearer', { session: false }, function * (err, user, info) {
       if (err) throw err
+      // always include user in body
       ctx.body = {
         user: {
           id: user.id
