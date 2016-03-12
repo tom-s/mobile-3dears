@@ -28,7 +28,7 @@ const sendEmail = ({ email, subject, text, html }) => {
 
 export const sendEmailValidation = ({ email, emailConfirmationToken }) => {
   const subject = 'MixingEars: email validation'
-  const text = `Please confirm your email : http://localhost:3000/validation?email=${email}&token=${emailConfirmationToken}`
+  const text = `Please confirm your email : http://localhost:3000/validation/${email}/${emailConfirmationToken}`
   return sendEmail({
     email,
     subject,

@@ -1,14 +1,11 @@
 HIGH PRIORITY
 - faire route validation email
-- faire route reset password
-- faire vraie authentification
 - remplacer axios par isomorphic-fetch
-- faire génération de token
-- faire passport bearer strategy
-- faire signup avec redux-form
-- faire signin avec redux-form
-- connecter signup & signin
-
+- faire signin et signup coté front
+- ajouter reset password
+- ajouter liste of courses
+- ajouter tests (sign in et signup)
+- mettre http://localhost:3000/ dans variable conf
 
 LOW PRIORITY
 - ajouter polymorphisme

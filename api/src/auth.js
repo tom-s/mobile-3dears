@@ -2,6 +2,8 @@ import passport from 'koa-passport'
 import passportLocal from 'passport-local'
 import passportBearer from 'passport-http-bearer'
 import jwt from 'jsonwebtoken'
+import passwordHash from 'password-hash'
+import R from 'ramda'
 import CONF from '../config/conf'
 
 const LocalStrategy = passportLocal.Strategy
@@ -25,12 +27,19 @@ passport.deserializeUser((id, done) => {
  * a user is logged in before asking them to approve the request.
  */
 passport.use(new LocalStrategy((username, password, done) => {
-  // retrieve user ...
-  if (username === 'test' && password === 'test') {
-    done(null, testUser)
-  } else {
-    done(null, false)
-  }
+   User.findOne({ username: username }, (err, user) => {
+    if(err || !user) {
+      done(null, false)
+    } else {
+      // Check password
+      if (passwordHash.verify(password, user.password)) {
+        user = R.omit(['password', 'emailConfirmationToken', 'emailConfirmed'], user)
+        done(null, user)
+      } else {
+        done(null, false)
+      }
+    }
+   })
 }))
 
 /**

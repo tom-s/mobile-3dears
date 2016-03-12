@@ -16,9 +16,22 @@ const TOKEN_EXPIRE_DURATION = 1440 * 30 // 30 days'
 /* Routes */
 const publicRouter = new Router()
 
-publicRouter.get('/public', function *() {
-  const body = 'Public Zone: koa'
-  this.body = body
+publicRouter.get('/validation', function *() {
+  const { email, token } = this.query
+  if (!email || !token) {
+    this.throw(400)
+  }
+
+  const user = yield User.findOne({ email, emailConfirmationToken: token, emailConfirmed: false })
+  if (user) {
+    user.emailConfirmed = true
+    user.emailConfirmationToken = null
+    yield user.save()
+    this.status = 200
+    this.body = 'Your account has been activated. Go to the website : <a href="http://localhost:3000/"> Click here </a>' // @todo: make it better
+  } else {
+    this.throw(400)
+  }
 })
 
 publicRouter.post('/user', function *() {
@@ -27,13 +40,14 @@ publicRouter.post('/user', function *() {
     this.throw(400)
   }
 
-  const hashedPassword = passwordHash.generate('password123')
+  const existingUser = yield User.findOne({ email: email })
 
-  const userExist = false
-  if (userExist) {
-    // todo
+  if (existingUser) {
+    this.throw(409)
   } else {
     const emailConfirmationToken = shortid.generate()
+    const hashedPassword = passwordHash.generate('password123')
+
     const newUser = User({
       email: email,
       username: email,
@@ -47,7 +61,7 @@ publicRouter.post('/user', function *() {
         email,
         emailConfirmationToken
       })
-      this.status = 200
+      this.status = 201
     } catch (err) {
       this.throw(500)
     }
