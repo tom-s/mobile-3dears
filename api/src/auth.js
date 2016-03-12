@@ -6,17 +6,18 @@ import passwordHash from 'password-hash'
 import R from 'ramda'
 import CONF from '../config/conf'
 
+// Models
+import User from '../models/User'
+
 const LocalStrategy = passportLocal.Strategy
 const BearerStrategy = passportBearer.Strategy
-
-const testUser = { id: 1, username: 'test' }
 
 passport.serializeUser((user, done) => {
   done(null, user.id)
 })
 
 passport.deserializeUser((id, done) => {
-  done(null, testUser)
+  done(null, id)
 })
 
 /**
@@ -28,7 +29,7 @@ passport.deserializeUser((id, done) => {
  */
 passport.use(new LocalStrategy((username, password, done) => {
    User.findOne({ username: username }, (err, user) => {
-    if(err || !user) {
+    if (err || !user) {
       done(null, false)
     } else {
       // Check password
