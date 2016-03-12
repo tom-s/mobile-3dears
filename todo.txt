@@ -1,4 +1,4 @@
-TODO
+HIGH PRIORITY
 - faire génération de token
 - faire passport bearer strategy
 - faire signup avec redux-form
@@ -6,5 +6,5 @@ TODO
 - connecter signup & signin
 
 
-NORMAL
+LOW PRIORITY
 - ajouter polymorphisme
