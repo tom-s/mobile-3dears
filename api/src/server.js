@@ -4,11 +4,19 @@ import session from 'koa-session'
 import cors from 'koa-cors'
 import bodyParser from 'koa-bodyparser'
 import passport from './auth'
-import CONF from '../config/conf'
+import mongoose from 'mongoose'
+import CONF from '../config/conf' // todo
 
 // Routes
 import publicRouter from './routes/public'
 import securedRouter from './routes/secured'
+
+/* DB connection */
+
+mongoose.connect('mongodb://DannyDane:grimreever@ds059215.mongolab.com:59215/3dears')
+mongoose.connection.on('error', (err) => {
+  console.log('error connecting to DB')
+})
 
 /* Boostrap */
 // Create app
@@ -24,12 +32,27 @@ app.use(cors())
 app.keys = [CONF.SESSION_SECRET]
 app.use(session(app))
 
+// Error handler
+app.use(function *(next) {
+  try {
+    yield next
+  } catch (err) {
+    this.status = err.status || 500;
+    this.body = err.message
+  }
+})
+
 // body parser
-app.use(bodyParser())
+app.use(bodyParser({
+  onerror(err) {
+    err.status = 400
+    err.message = 'bad json'
+    throw err
+  }
+}))
 
 // Auth
 app.use(passport.initialize())
-// app.use(passport.session())
 
 /* Routing */
 // public

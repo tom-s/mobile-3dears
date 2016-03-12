@@ -1,4 +1,7 @@
 HIGH PRIORITY
+- faire mongoose
+- faire route création utilisateur
+- remplacer axios par isomorphic-fetch
 - faire génération de token
 - faire passport bearer strategy
 - faire signup avec redux-form
