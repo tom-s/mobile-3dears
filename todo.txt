@@ -1,6 +1,7 @@
 HIGH PRIORITY
-- faire mongoose
-- faire route création utilisateur
+- faire route validation email
+- faire route reset password
+- faire vraie authentification
 - remplacer axios par isomorphic-fetch
 - faire génération de token
 - faire passport bearer strategy
