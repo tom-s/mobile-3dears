@@ -15,7 +15,7 @@
     "server:dev": "`npm bin`/nodemon --watch api/src/ api/src/server.js --exec 'npm run server:babel'",
     "server:babel": "babel-node",
     "front:build": "node_modules/.bin/webpack --config webpack/prod.config.js",
-    "front:dev": "node_modules/.bin/webpack-dev-server --config webpack/dev.config.js",
+    "front:dev": "node_modules/.bin/webpack-dev-server --config webpack/dev.config.js --no-info",
     "test": "npm run lint && npm run mocha",
     "test:watch": "npm run lint && test -- --watch",
     "mocha": "node_modules/.bin/mocha --compilers js:babel-core/register app/tests/mocha/**/*Spec.js --recursive",
