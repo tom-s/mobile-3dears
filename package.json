@@ -11,6 +11,7 @@
     ]
   },
   "scripts": {
+    "dev":  "npm run server:dev & npm run front:dev",
     "server:dev": "`npm bin`/nodemon --watch api/src/ api/src/server.js --exec 'npm run server:babel'",
     "server:babel": "babel-node",
     "front:build": "node_modules/.bin/webpack --config webpack/prod.config.js",
