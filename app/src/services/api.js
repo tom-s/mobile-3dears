@@ -13,3 +13,10 @@ export const signInApi = (email, password) => {
     password
   })
 }
+
+export const emailValidateApi = (email, token) => {
+  return Api.post('/validation', {
+    email,
+    token
+  })
+}

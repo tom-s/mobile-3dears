@@ -15,8 +15,8 @@ const TOKEN_EXPIRE_DURATION = 1440 * 30 // 30 days'
 /* Routes */
 const publicRouter = new Router()
 
-publicRouter.get('/validation', function *() {
-  const { email, token } = this.query
+publicRouter.post('/validation', function *() {
+  const { email, token } = this.request.body
   if (!email || !token) {
     this.throw(400)
   }
@@ -45,7 +45,7 @@ publicRouter.post('/user', function *() {
     this.throw(409)
   } else {
     const emailConfirmationToken = shortid.generate()
-    const hashedPassword = passwordHash.generate('password123')
+    const hashedPassword = passwordHash.generate(password)
 
     const newUser = User({
       email: email,

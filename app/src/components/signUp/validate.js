@@ -1,11 +1,8 @@
-const validate = (values) => {
+export const validate = (values) => {
   const errors = {}
 
   // Retrieve values
-  let { email, password, passwordConfirmation } = values
-  email = email || ''
-  password = password || ''
-  passwordConfirmation = passwordConfirmation || ''
+  let { email = '', password = '', passwordConfirmation = '' } = values
 
   // Check validity
   if (!email.trim()) {
@@ -18,8 +15,5 @@ const validate = (values) => {
     errors.passwordConfirmation = 'Password confirmation must match password'
   }
 
-  console.log('validate errors', errors)
   return errors
 }
-
-export default validate

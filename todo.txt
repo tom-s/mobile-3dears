@@ -1,7 +1,6 @@
 HIGH PRIORITY
-- faire gestion des différentes erreurs sur le signup
-- faire instant check of email
-- ajouter validation formulaire
+- ajouter validation formulaire sign in
+- ajouter effet disabled sur les formulaires
 - ajouter tests (sign in et signup)
 - ajouter liste of courses
 - mettre http://localhost:3000/ dans variable conf

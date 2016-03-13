@@ -8,7 +8,7 @@ const SignUp = (props) => {
     <section className="SignUp">
       <div className="container">
         <h3 className="text-center">Sign up</h3>
-        <SignUpForm onSubmit={onSubmit}/>
+        <SignUpForm onSubmit={onSubmit} />
       </div>
     </section>
   )

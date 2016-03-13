@@ -1,11 +1,10 @@
 import React from 'react'
 import {reduxForm} from 'redux-form'
-import validate from './validate'
+import { validate } from './validate'
 import FormError from '../common/formError'
 
 let SignUpForm = (props) => {
   const { fields: { email, password, passwordConfirmation }, handleSubmit } = props
-  console.log('email error ? ', email.error)
   
   return (
     <form className="Form" onSubmit={handleSubmit}>

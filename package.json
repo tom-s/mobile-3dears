@@ -99,6 +99,7 @@
     "redux": "^3.0.4",
     "redux-form": "^4.2.0",
     "redux-logger": "^2.6.0",
+    "redux-router": "^1.0.0-beta7",
     "redux-saga": "^0.9.3",
     "redux-thunk": "^1.0.0",
     "sass-loader": "^3.1.2",
