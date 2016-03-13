@@ -1,11 +1,12 @@
 HIGH PRIORITY
-- faire route validation email
-- remplacer axios par isomorphic-fetch
-- faire signin et signup coté front
-- ajouter liste of courses
+- faire gestion des différentes erreurs sur le signup
+- faire instant check of email
+- ajouter validation formulaire
 - ajouter tests (sign in et signup)
+- ajouter liste of courses
 - mettre http://localhost:3000/ dans variable conf
 
 LOW PRIORITY
-- ajouter reset password
+- s'arranger pour ne plus avoir route.dev et route.prod (regarder ce qu'a fait sergei), et pareil pour le store
+- faire reset password
 - ajouter polymorphisme

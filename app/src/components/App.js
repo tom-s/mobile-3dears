@@ -16,7 +16,7 @@ const App = (props) => {
       <Header />
       {children}
        <Footer />
-       <GrowlerContainer />
+       <GrowlerContainer shownFor="5000"/>
     </div>
   )
 }
