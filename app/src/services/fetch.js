@@ -3,8 +3,6 @@ import fetch from 'isomorphic-fetch'
 import R from 'ramda'
 import { API_URL } from 'config'
 
-console.log("api url ?", API_URL)
-
 es6Promise.polyfill() // activate polyfill
 
 const errorStatus = [400, 401, 403, 409, 500, 503]

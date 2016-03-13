@@ -1,4 +1,5 @@
 HIGH PRIORITY
+- faire fonctionner alias avec hot reload
 - faire la gestion de token
 > authBuilder qui enregistre le referer et redirige au login
 - ajouter liste of courses

@@ -36,7 +36,8 @@ module.exports = {
       {
         test: /\.js?$/,
         exclude: /node_modules/,
-        loaders: ['react-hot', 'babel']
+        loaders: ['react-hot', 'babel'],
+        noParse: [path.join(__dirname, '../config')]
       },
       // One of the module requires babel loading (es7 decorators)
       {

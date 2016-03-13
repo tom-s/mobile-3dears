@@ -1,6 +1,8 @@
 import nodemailer from 'nodemailer'
 import { ROOT_URL } from 'config'
 
+const SENDER = 'info@mixingears.com'
+
 // This is your API key that you retrieve from www.mailgun.com/cp (free up to 10K monthly emails)
 const CONF_MAIL = {
   service: 'Mailgun',
@@ -15,7 +17,7 @@ const CONF_MAIL = {
 const sendEmail = ({ email, subject, text, html }) => {
   const mailer = nodemailer.createTransport(CONF_MAIL)
   let mailOpts = {
-    from: 'info@mixingears.com',
+    from: SENDER,
     to: email,
     subject: subject,
     text: text
@@ -28,7 +30,6 @@ const sendEmail = ({ email, subject, text, html }) => {
 }
 
 export const sendEmailValidation = ({ email, emailConfirmationToken }) => {
-  CONFIG
   const subject = 'MixingEars: email validation'
   const text = `Please confirm your email : ${ROOT_URL}/validation?email=${email}&token=${emailConfirmationToken}`
   return sendEmail({
