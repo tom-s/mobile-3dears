@@ -9,7 +9,7 @@ const SignIn = (props) => {
     <section className="SignIn">
       <div className="container">
         <h3 className="text-center">Sign in</h3>
-        <p className="text-center">{"Don't have an account yet?"}} <Link to="/sign_up">Create an account</Link></p>
+        <p className="text-center">{"Don't have an account yet?"} <Link to="/sign_up">Create an account</Link></p>
         <SignInForm onSubmit={onSubmit}/>
       </div>
     </section>
