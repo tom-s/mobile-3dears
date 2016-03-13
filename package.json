@@ -58,6 +58,7 @@
     "co-monk": "^1.0.0",
     "css-loader": "^0.23.0",
     "email-verification": "^0.3.1",
+    "es6-promise": "^3.1.2",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.8.5",
     "font-awesome": "^4.5.0",

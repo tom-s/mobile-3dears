@@ -2,10 +2,10 @@ HIGH PRIORITY
 - faire route validation email
 - remplacer axios par isomorphic-fetch
 - faire signin et signup coté front
-- ajouter reset password
 - ajouter liste of courses
 - ajouter tests (sign in et signup)
 - mettre http://localhost:3000/ dans variable conf
 
 LOW PRIORITY
+- ajouter reset password
 - ajouter polymorphisme

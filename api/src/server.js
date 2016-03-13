@@ -14,7 +14,7 @@ import securedRouter from './routes/secured'
 /* DB connection */
 
 mongoose.connect('mongodb://DannyDane:grimreever@ds059215.mongolab.com:59215/3dears')
-mongoose.connection.on('error', (err) => {
+mongoose.connection.on('error', () => {
   console.log('error connecting to DB')
 })
 
@@ -44,7 +44,7 @@ app.use(function *(next) {
 
 // body parser
 app.use(bodyParser({
-  onerror(err) {
+  onerror (err) {
     err.status = 400
     err.message = 'bad json'
     throw err
@@ -63,11 +63,8 @@ app.use(securedRouter.routes())
 
 /* Default (should be 404) */
 app.use(function *() {
-	// Ignore favicon
-  if (this.path === '/favicon.ico') return
-
-  // Body
-  this.body = 'Hello from koajs'
+	// Body
+  this.status = 404
 })
 
 app.listen(3000)

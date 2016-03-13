@@ -7,7 +7,7 @@ import R from 'ramda'
 import CONF from '../config/conf'
 
 // Models
-import User from '../models/User'
+import User from './models/User'
 
 const LocalStrategy = passportLocal.Strategy
 const BearerStrategy = passportBearer.Strategy
@@ -28,19 +28,19 @@ passport.deserializeUser((id, done) => {
  * a user is logged in before asking them to approve the request.
  */
 passport.use(new LocalStrategy((username, password, done) => {
-   User.findOne({ username: username }, (err, user) => {
+  User.findOne({ username: username }, (err, user) => {
     if (err || !user) {
       done(null, false)
     } else {
       // Check password
       if (passwordHash.verify(password, user.password)) {
-        user = R.omit(['password', 'emailConfirmationToken', 'emailConfirmed'], user)
+        user = R.omit(['password', 'emailConfirmationToken', 'emailConfirmed'], user) // @todo: replace with pick
         done(null, user)
       } else {
         done(null, false)
       }
     }
-   })
+  })
 }))
 
 /**
