@@ -1,11 +1,10 @@
 HIGH PRIORITY
-- faire redirection après validation email
-- ajouter effet disabled sur les formulaires
+- faire check email
 - ajouter tests (sign in et signup)
 - ajouter liste of courses
-- mettre http://localhost:3000/ dans variable conf
+- mettre http://localhost:3000/et localhost:8080 dans variable conf
+- s'arranger pour ne plus avoir route.dev et route.prod (regarder ce qu'a fait sergei), et pareil pour le store
 
 LOW PRIORITY
-- s'arranger pour ne plus avoir route.dev et route.prod (regarder ce qu'a fait sergei), et pareil pour le store
 - faire reset password
 - ajouter polymorphisme

@@ -108,6 +108,7 @@
     "swagger-koa": "^1.0.8",
     "thunkify": "^2.1.2",
     "url-loader": "^0.5.7",
+    "validator": "^5.1.0",
     "webpack": "^1.12.9"
   },
   "devDependencies": {

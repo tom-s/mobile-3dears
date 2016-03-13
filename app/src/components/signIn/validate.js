@@ -6,7 +6,7 @@ export const validate = (values) => {
   const minPasswordLength = 5
 
   // Retrieve values
-  let { email = '', password = '', passwordConfirmation = '' } = values
+  const { email = '', password = '' } = values
 
   // Check validity
   if (!email.trim()) {
@@ -20,9 +20,6 @@ export const validate = (values) => {
   }
   if (!isLength(password, { min : minPasswordLength })) {
     errors.password = `Password should be at least ${minPasswordLength} characters long`
-  }
-  if (password && passwordConfirmation.trim() !== password.trim()) {
-    errors.passwordConfirmation = 'Password confirmation must match password'
   }
 
   return errors

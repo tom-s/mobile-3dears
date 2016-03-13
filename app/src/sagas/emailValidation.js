@@ -1,4 +1,5 @@
 import { call, put } from 'redux-saga/effects'
+import { push } from 'react-router-redux'
 import { takeEvery } from 'redux-saga'
 import { EMAIL_VALIDATE_REQUEST, EMAIL_VALIDATE_ERROR, EMAIL_VALIDATE_SUCCESS } from '../actions/emailValidation'
 import { emailValidateApi } from '../services/api'
@@ -13,9 +14,11 @@ export function * emailValidationSaga ({ payload }) {
     yield call(emailValidateApi, email, token)
     yield put({ type: EMAIL_VALIDATE_SUCCESS })
     yield put(notifySuccess())
+    yield put(push('/')) // redirect to home
   } catch (error) {
     yield put({ type: EMAIL_VALIDATE_ERROR })
     yield put(notifyError())
+    yield put(push('/')) // redirect to home
   }
 }
 
