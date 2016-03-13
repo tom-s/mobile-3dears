@@ -1,9 +1,9 @@
 import { call, put } from 'redux-saga/effects'
+import { push } from 'react-router-redux'
 import { takeEvery } from 'redux-saga'
 import { SIGNIN_REQUEST, SIGNIN_ERROR, SIGNIN_SUCCESS } from '../actions/signIn'
 import { signInApi } from '../services/api'
 import { GrowlerActions } from 'flash-notification-react-redux'
-import { push } from 'react-router-redux'
 
 const notifySuccess = () => GrowlerActions.showGrowlerSuccess('You are now logged in')
 const notifyError = () => GrowlerActions.showGrowlerError('Invalid username/password pair')
@@ -11,7 +11,7 @@ const notifyError = () => GrowlerActions.showGrowlerError('Invalid username/pass
 export function * loginSaga ({ payload }) {
   const { email, password } = payload
   try {
-    const res = yield call(signInApi, email, password)
+    yield call(signInApi, email, password)
     yield put({ type: SIGNIN_SUCCESS })
     yield put(notifySuccess())
     yield put(push('/'))

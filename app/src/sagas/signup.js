@@ -1,4 +1,5 @@
 import { call, put } from 'redux-saga/effects'
+import { push } from 'react-router-redux'
 import { takeEvery } from 'redux-saga'
 import { SIGNUP_REQUEST, SIGNUP_SUCCESS, SIGNUP_ERROR } from '../actions/signUp'
 import { signUpApi } from '../services/api'
@@ -14,10 +15,14 @@ export function * signupSaga ({ payload }) {
     yield call(signUpApi, email, password)
     yield put({ type: SIGNUP_SUCCESS })
     yield put(notifySuccess())
+    yield put(push('/'))
   } catch ({ status }) {
     yield put({ type: SIGNUP_ERROR })
     const notifError = (status === 409) ? notifyAlreadySignedUpError() : notifyError()
     yield put(notifError)
+    if (status === 409) {
+      yield put(push('/sign_in')) // redirect to sign in
+    }
   }
 }
 
