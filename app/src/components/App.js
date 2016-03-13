@@ -1,4 +1,5 @@
 import React from 'react'
+import { GrowlerComponent } from 'flash-notification-react-redux'
 
 // Style
 import '../../styles/main.scss'
@@ -15,6 +16,7 @@ const App = (props) => {
       <Header />
       {children}
        <Footer />
+       <GrowlerComponent />
     </div>
   )
 }
