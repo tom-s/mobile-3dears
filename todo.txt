@@ -1,5 +1,5 @@
 HIGH PRIORITY
-- ajouter validation formulaire sign in
+- faire redirection après validation email
 - ajouter effet disabled sur les formulaires
 - ajouter tests (sign in et signup)
 - ajouter liste of courses

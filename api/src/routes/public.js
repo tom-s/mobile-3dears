@@ -69,7 +69,9 @@ publicRouter.post('/user', function *() {
 
 publicRouter.post('/login', function *() {
   const ctx = this
+  console.log("will try passport auth")
   yield passport.authenticate('local', { session: false }, function * (err, user, info) {
+    console.log("res is", err, user)
     if (err) throw err
     if (!user) {
       ctx.status = 401

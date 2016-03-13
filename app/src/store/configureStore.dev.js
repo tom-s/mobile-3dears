@@ -1,4 +1,6 @@
 import { createStore, applyMiddleware, compose } from 'redux'
+import { routerMiddleware } from 'react-router-redux'
+import { browserHistory } from 'react-router'
 import thunk from 'redux-thunk'
 import createLogger from 'redux-logger'
 import createSagaMiddleware from 'redux-saga'
@@ -8,12 +10,13 @@ import DevTools from '../containers/DevTools'
 
 export default function configureStore (initialState) {
   const sagaMiddleware = createSagaMiddleware(sagas)
+  const routingMiddleware = routerMiddleware(browserHistory)
 
   const store = createStore(
     rootReducer,
     initialState,
       compose(
-        applyMiddleware(thunk, sagaMiddleware, createLogger()),
+        applyMiddleware(thunk, routingMiddleware, sagaMiddleware, createLogger()),
         DevTools.instrument()
       )
   )

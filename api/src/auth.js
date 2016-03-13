@@ -28,7 +28,7 @@ passport.deserializeUser((id, done) => {
  * a user is logged in before asking them to approve the request.
  */
 passport.use(new LocalStrategy((username, password, done) => {
-  User.findOne({ username: username }, (err, user) => {
+  User.findOne({ username: username, emailConfirmed: true }, (err, user) => {
     if (err || !user) {
       done(null, false)
     } else {
@@ -52,10 +52,8 @@ passport.use(new LocalStrategy((username, password, done) => {
  * the authorizing user.
  */
 passport.use(new BearerStrategy((accessToken, done) => {
-  console.log('check access token', accessToken)
   jwt.verify(accessToken, CONF.TOKEN_SECRET, (err, decoded) => {
     if (err) { return done(err) }
-    console.log('decoded', decoded)
     done(null, decoded, { scope: 'all' })
   })
 

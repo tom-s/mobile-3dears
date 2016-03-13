@@ -9,7 +9,7 @@ export const signUpApi = (email, password) => {
 
 export const signInApi = (email, password) => {
   return Api.post('/login', {
-    email,
+    username: email,
     password
   })
 }
