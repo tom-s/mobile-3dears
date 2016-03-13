@@ -58,6 +58,9 @@ module.exports = {
       { test: /\.(jpe?g|png|gif)$/i, loader: 'url?limit=10000' }
     ]},
   resolve: {
+    alias: {
+      config: path.join(__dirname, '../config', 'development.js')
+    },
     extensions: ['', '.js', '.jsx']
   },
   devServer: {

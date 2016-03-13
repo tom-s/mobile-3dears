@@ -1,10 +1,11 @@
 HIGH PRIORITY
-- ajouter tests (sign in et signup)
 - faire la gestion de token
+> authBuilder qui enregistre le referer et redirige au login
 - ajouter liste of courses
-- mettre http://localhost:3000/et localhost:8080 dans variable conf
+- ajouter tests (sign in et signup)
 
 LOW PRIORITY
 - faire reset password
+- faire build webpack
 - s'arranger pour ne plus avoir route.dev et route.prod (regarder ce qu'a fait sergei)
 - ajouter polymorphisme

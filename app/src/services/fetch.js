@@ -1,8 +1,9 @@
 import es6Promise from 'es6-promise'
 import fetch from 'isomorphic-fetch'
 import R from 'ramda'
+import { API_URL } from 'config'
 
-const API_URL = 'http://localhost:3000'
+console.log("api url ?", API_URL)
 
 es6Promise.polyfill() // activate polyfill
 
