@@ -6,7 +6,7 @@ const API_URL = 'http://localhost:3000'
 
 es6Promise.polyfill() // activate polyfill
 
-const errorStatus = [ 401, 403, 500, 503]
+const errorStatus = [ 401, 403, 409, 500, 503]
 
 const _serializeParams = (params) => {
   return Object.keys(params).map((key) => {
@@ -33,9 +33,13 @@ const Api = {
   },
 
   post (url, params) {
-    const strParams = _serializeParams(params)
+    const strParams = JSON.stringify(params)
     return fetch(API_URL + url, {
       method: 'post',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
       body: strParams
     }).then((response) => {
       if (R.contains(response.status, errorStatus)) {

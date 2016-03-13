@@ -16,7 +16,7 @@ let SignUpForm = (props) => {
       </fieldset>
       <fieldset className="form-group">
         <label for="passwordConfirmation" className="pull-left">Password confirmation</label>
-        <input type="passwordConfirmation" className="form-control" placeholder="Password confirmation" {...passwordConfirmation}/>
+        <input type="password" className="form-control" placeholder="Password confirmation" {...passwordConfirmation}/>
       </fieldset>
       <button className="Submit btn btn-signin" value="Sign up">Sign up</button>
     </form>
