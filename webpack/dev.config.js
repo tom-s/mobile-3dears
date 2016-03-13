@@ -5,7 +5,7 @@ const HtmlwebpackPlugin = require('html-webpack-plugin')
 // Config
 const ROOT_PATH = path.resolve(__dirname) + '/../app/'
 const ASSETS_PATHS = ROOT_PATH + 'static/dist/'
-const NODE_MODULES_PATH = ROOT_PATH + '../node_modules'
+const NODE_MODULES_PATH = ROOT_PATH + '../node_modules/'
 const HOST = 'localhost'
 const PORT = 8080
 
@@ -38,7 +38,11 @@ module.exports = {
         exclude: /node_modules/,
         loaders: ['react-hot', 'babel']
       },
-
+      // One of the module requires babel loading (es7 decorators)
+      {
+        test: /node_modules\/flash-notification-react-redux\/.*.jsx?$/,
+        loaders: ['babel']
+      },
       {
         test: /\.scss$/,
         loader: 'style!css!sass?outputStyle=expanded=includePaths[]=' + NODE_MODULES_PATH + 'bootstrap-sass/assets/stylesheets/'

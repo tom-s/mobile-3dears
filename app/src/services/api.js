@@ -1,32 +1,15 @@
-import es6Promise from 'es6-promise'
-import fetch from 'isomorphic-fetch'
+import Api from './fetch'
 
-const API_URL = 'http://localhost:3000'
-
-es6Promise.polyfill() // activate polyfill
-
-const _serializeParams = (params) => {
-  return Object.keys(params).map((key) => {
-    return key + '=' + encodeURIComponent(params[key])
-  }).join('&')
+export const signUpApi = (email, password) => {
+  return Api.post('/user', {
+    email,
+    password
+  })
 }
 
-const Api = {
-  get (url, params) {
-    const strParams = _serializeParams(params)
-    return fetch(API_URL + url, {
-      method: 'get',
-      body: strParams
-    })
-  },
-  post (url, params) {
-    const strParams = _serializeParams(params)
-    return fetch(API_URL + url, {
-      method: 'post',
-      body: strParams
-    })
-  }
+export const signInApi = (email, password) => {
+  return Api.post('/login', {
+    email,
+    password
+  })
 }
-
-export default Api
-

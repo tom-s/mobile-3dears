@@ -1,12 +1,17 @@
 import { connect } from 'react-redux'
 import SignUp from '../../components/SignUp'
+import {SIGNUP_REQUEST} from '../../actions/signIn'
 
-const mapDispatchToProps = (dispatch) => {}
-
-const mapStateToProps = (state, ownProps) => {
-  return {}
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onSubmit: (values) => {
+      dispatch({ type: SIGNUP_REQUEST, payload: values })
+    }
+  }
 }
 
-const SignUpContainer = connect(mapStateToProps)(SignUp)
+const mapStateToProps = (state, ownProps) => ({})
+
+const SignUpContainer = connect(mapStateToProps, mapDispatchToProps)(SignUp)
 
 export default SignUpContainer
