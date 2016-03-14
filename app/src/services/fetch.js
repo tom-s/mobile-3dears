@@ -26,7 +26,7 @@ const Api = {
           message: response.body
         }
       } else {
-        return response.body
+        return response.json()
       }
     })
   },
@@ -47,7 +47,7 @@ const Api = {
           message: response.body
         }
       } else {
-        return response.body
+        return response.json()
       }
     })
   }

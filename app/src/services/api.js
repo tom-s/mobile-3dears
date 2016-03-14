@@ -1,5 +1,7 @@
 import Api from './fetch'
 
+const SECURITY_TOKEN = 'mixinEars.token'
+
 export const signUpApi = (email, password) => {
   return Api.post('/user', {
     email,

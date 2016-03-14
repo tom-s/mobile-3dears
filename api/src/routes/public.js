@@ -78,10 +78,7 @@ publicRouter.post('/login', function *() {
       })
       ctx.body = {
         success: true,
-        user: {
-          token: token,
-          id: user.id
-        }
+        token: token
       }
     }
   })

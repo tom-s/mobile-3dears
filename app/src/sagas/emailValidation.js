@@ -15,11 +15,11 @@ export function * emailValidationSaga ({ payload }) {
     yield call(emailValidateApi, email, token)
     yield put({ type: EMAIL_VALIDATE_SUCCESS })
     yield put(notifySuccess())
-    yield put(push('/')) // redirect to home
+    yield put(push('/sign_in')) // redirect to sign in
   } catch (error) {
     yield put({ type: EMAIL_VALIDATE_ERROR })
     yield put(notifyError())
-    yield put(push('/')) // redirect to home
+    yield put(push('/sign_in')) // redirect to home
   }
 }
 
