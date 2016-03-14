@@ -1,10 +1,12 @@
 HIGH PRIORITY
+- faire le signout qui vide le cookie (saga) et change le state
+- ajouter tests (sign in et signup)
+- enregistrer le referer lors de la redirection
 - gérer token expirés
 - ajouter liste of courses
-- ajouter tests (sign in et signup)
 
 LOW PRIORITY
-- enregistrer le referer lors de la redirection
+
 - faire reset password
 - s'arranger pour ne plus avoir route.dev et route.prod (regarder ce qu'a fait sergei)
 - ajouter polymorphisme

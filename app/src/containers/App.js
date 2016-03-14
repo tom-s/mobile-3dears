@@ -1,21 +1,19 @@
 import { connect } from 'react-redux'
-import { getAuthToken } from '../services/auth'
-import { SIGNIN_SUCCESS } from '../actions/signIn'
+import { SIGNOUT_REQUEST } from '../actions/signOut'
 import App from '../components/App'
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    initAuth: () => {
-      const token = getAuthToken()
-      if (token) {
-        dispatch({ type: SIGNIN_SUCCESS, payload: token })
-      }
+    signOut: () => {
+      dispatch({ type: SIGNOUT_REQUEST})
     }
   }
 }
 
 const mapStateToProps = (state, ownProps) => {
-  return {}
+  return {
+    loggedIn: state.auth.loggedIn
+  }
 }
 
 const AppContainer = connect(mapStateToProps, mapDispatchToProps)(App)

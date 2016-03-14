@@ -27,10 +27,10 @@ export default(store) => {
   }
 
   const loginRequired = (nextState, replace, cb) => {
-    console.log("nextState", nextState)
     const checkAuth = () => {
       const { auth:  { loggedIn } } = store.getState()
       if (!loggedIn) {
+        console.log("location", nextState.location)
         replace('/')
       }
       cb()

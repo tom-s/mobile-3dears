@@ -9,11 +9,11 @@ import Header from './Header'
 import Footer from './Footer'
 
 const App = (props) => {
-  const { children } = props
+  const { children, loggedIn, signOut } = props
 
   return (
     <div className="App">
-      <Header />
+      <Header loggedIn={loggedIn} signOut={signOut}/>
       {children}
       <Footer />
       <GrowlerContainer shownFor="5000"/>

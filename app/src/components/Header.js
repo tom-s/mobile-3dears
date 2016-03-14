@@ -6,8 +6,8 @@ import NavBarRight from './header/NavBarRight'
 import NavBarRightLoggedIn from './header/NavBarRightLoggedIn'
 
 const Header = (props) => {
-  const { loggedIn } = props
-  const headerLinks = (loggedIn) ? (<NavBarRightLoggedIn />) : (<NavBarRight />)
+  const { loggedIn, signOut } = props
+  const headerLinks = (loggedIn) ? (<NavBarRightLoggedIn signOut={signOut} />) : (<NavBarRight />)
 
   return (
     <nav className="Header navbar navbar-default navbar-static-top">
