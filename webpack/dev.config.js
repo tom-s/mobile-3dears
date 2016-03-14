@@ -25,7 +25,7 @@ module.exports = {
   output: {
     path: DIST_PATH,
     filename: '[name]-[chunkgitsha].js',
-    chunkFilename: '[name]-[chunkgitsha].js',
+    chunkFilename: '[id]-[chunkgitsha].js',
     publicPath: '/'
   },
   module: {
