@@ -12,6 +12,7 @@ import PricingPage from './containers/pages/Pricing'
 import SignInPage from './containers/pages/SignIn'
 import SignUpPage from './containers/pages/SignUp'
 import EmailValidationPage from './containers/pages/EmailValidation'
+import DashboardPage from './containers/pages/DashboardPage'
 
 export default(store) => {
 
@@ -25,8 +26,8 @@ export default(store) => {
     return delay(500)
   }
 
-  const loginRequired = (nexState, replace, cb) => {
-    console.log("nextState", nexState)
+  const loginRequired = (nextState, replace, cb) => {
+    console.log("nextState", nextState)
     const checkAuth = () => {
       const { auth:  { loggedIn } } = store.getState()
       if (!loggedIn) {
@@ -51,7 +52,7 @@ export default(store) => {
       <Route path="/sign_in" component={SignInPage} />
       <Route path="/sign_up" component={SignUpPage} />
       <Route path="/validation" component={EmailValidationPage} />
-      <Route path="/dashboard" onEnter={loginRequired} component={PricingPage} />
+      <Route path="/dashboard" onEnter={loginRequired} component={DashboardPage} />
     </Route>
   )
 }
