@@ -1,2 +1,5 @@
 export const ROOT_URL = 'http://localhost:8080'
 export const API_URL = 'http://localhost:3000'
+export const TOKEN_EXPIRE_DURATION = 1440 * 30 // 30 days'
+export const TOKEN_SECRET = 'thisisatokensecret'
+export const SESSION_SECRET = 'thisisasessionsecret'

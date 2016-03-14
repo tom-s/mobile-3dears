@@ -1,11 +1,11 @@
 import es6Promise from 'es6-promise'
 import fetch from 'isomorphic-fetch'
 import R from 'ramda'
-import { API_URL } from 'config'
+import { API_URL } from '../../../config/conf'
 
 es6Promise.polyfill() // activate polyfill
 
-const errorStatus = [400, 401, 403, 409, 500, 503]
+const errorStatus = [400, 401, 403, 404, 409, 500, 503]
 
 const _serializeParams = (params) => {
   return Object.keys(params).map((key) => {

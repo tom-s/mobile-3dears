@@ -4,7 +4,7 @@ import passportBearer from 'passport-http-bearer'
 import jwt from 'jsonwebtoken'
 import passwordHash from 'password-hash'
 import R from 'ramda'
-import CONF from '../config/conf'
+import { TOKEN_SECRET } from '../../config/conf'
 
 // Models
 import User from './models/User'
@@ -52,7 +52,7 @@ passport.use(new LocalStrategy((username, password, done) => {
  * the authorizing user.
  */
 passport.use(new BearerStrategy((accessToken, done) => {
-  jwt.verify(accessToken, CONF.TOKEN_SECRET, (err, decoded) => {
+  jwt.verify(accessToken, TOKEN_SECRET, (err, decoded) => {
     if (err) { return done(err) }
     done(null, decoded, { scope: 'all' })
   })

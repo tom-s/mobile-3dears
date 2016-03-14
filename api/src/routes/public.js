@@ -1,16 +1,13 @@
 import Router from 'koa-router'
 import passport from '../auth'
 import jwt from 'jsonwebtoken'
-import CONF from '../../config/conf'
+import { TOKEN_SECRET, TOKEN_EXPIRE_DURATION } from '../../../config/conf'
 import shortid from 'shortid'
 import passwordHash from 'password-hash'
 import {sendEmailValidation} from '../services/mailer'
 
 // Models
 import User from '../models/User'
-
-// Token settings
-const TOKEN_EXPIRE_DURATION = 1440 * 30 // 30 days'
 
 /* Routes */
 const publicRouter = new Router()
@@ -78,7 +75,7 @@ publicRouter.post('/login', function *() {
       ctx.body = { success: false }
     } else {
       // create a token
-      const token = jwt.sign(user, CONF.TOKEN_SECRET, {
+      const token = jwt.sign(user, TOKEN_SECRET, {
         expiresInMinutes: TOKEN_EXPIRE_DURATION
       })
       ctx.body = {

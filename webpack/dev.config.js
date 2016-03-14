@@ -1,7 +1,6 @@
 const webpack = require('webpack')
 const path = require('path')
 const HtmlwebpackPlugin = require('html-webpack-plugin')
-const hotMiddlewareScript = 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=30000&reload=true'
 const GitSHAPlugin = require('git-sha-webpack-plugin')
 const WebpackNotifierPlugin = require('webpack-notifier')
 
@@ -16,11 +15,10 @@ module.exports = {
     'main': [
       'bootstrap-sass!' + path.join(ROOT_PATH, 'assets/styles/bootstrap.config.js'),
       'font-awesome-webpack!' + path.join(ROOT_PATH, 'assets/styles/font-awesome.config.js'),
-      path.join(ROOT_PATH, 'src/index'),
-      hotMiddlewareScript
+      path.join(ROOT_PATH, 'src/index')
     ],
     vendor: ['react', 'react-dom', 'react-router-redux', 'react-router', 'redux-form', 'redux-logger', 'validator', 'isomorphic-fetch',
-    'redux', 'redux-thunk', 'redux-saga', 'lodash', 'ramda', hotMiddlewareScript]
+    'redux', 'redux-thunk', 'redux-saga', 'lodash', 'ramda']
   },
   output: {
     path: DIST_PATH,
@@ -66,9 +64,6 @@ module.exports = {
       }
     ]},
   resolve: {
-    alias: {
-      config: path.join(__dirname, '../config', 'development.js')
-    },
     extensions: ['', '.js', '.jsx']
   },
   devServer: {

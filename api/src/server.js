@@ -5,7 +5,7 @@ import cors from 'koa-cors'
 import bodyParser from 'koa-bodyparser'
 import passport from './auth'
 import mongoose from 'mongoose'
-import CONF from '../config/conf' // todo
+import { SESSION_SECRET } from '../../config/conf' // todo
 
 // Routes
 import publicRouter from './routes/public'
@@ -29,7 +29,7 @@ app.use(logger())
 app.use(cors())
 
 // Sessions
-app.keys = [CONF.SESSION_SECRET]
+app.keys = [SESSION_SECRET]
 app.use(session(app))
 
 // Error handler

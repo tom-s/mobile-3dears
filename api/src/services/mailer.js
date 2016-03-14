@@ -1,5 +1,5 @@
 import nodemailer from 'nodemailer'
-import { ROOT_URL } from 'config'
+import { ROOT_URL } from '../../../config/conf'
 
 const SENDER = 'info@mixingears.com'
 
