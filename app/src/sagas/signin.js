@@ -11,12 +11,10 @@ const notifyError = () => GrowlerActions.showGrowlerError('Invalid username/pass
 
 export function * loginSaga ({ payload }) {
   const { email, password } = payload
-  console.log(' loginSaga')
   try {
     const { token } = yield call(signInApi, email, password)
-    console.log('token', token)
     setAuthToken(token)
-    yield put({ type: SIGNIN_SUCCESS })
+    yield put({ type: SIGNIN_SUCCESS, payload: token })
     yield put(notifySuccess())
     yield put(push('/'))
   } catch (error) {

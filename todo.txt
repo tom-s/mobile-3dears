@@ -1,12 +1,10 @@
 HIGH PRIORITY
-- faire fonctionner alias avec hot reload
-- faire la gestion de token
-> authBuilder qui enregistre le referer et redirige au login
+- faire page dashboard protégée par authentification
 - ajouter liste of courses
 - ajouter tests (sign in et signup)
 
 LOW PRIORITY
 - faire reset password
-- faire build webpack
 - s'arranger pour ne plus avoir route.dev et route.prod (regarder ce qu'a fait sergei)
 - ajouter polymorphisme
+- faire build webpack

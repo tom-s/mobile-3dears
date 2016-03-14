@@ -11,5 +11,5 @@ export const removeAuthToken = () => {
 }
 
 export const getAuthToken = () => {
-  Cookies.get(SECURITY_TOKEN)
+  return Cookies.get(SECURITY_TOKEN)
 }

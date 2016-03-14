@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import EmailValidation from '../../components/EmailValidation'
-import {EMAIL_VALIDATE_REQUEST} from '../../actions/emailValidation'
+import { EMAIL_VALIDATE_REQUEST } from '../../actions/emailValidation'
 
 const mapDispatchToProps = (dispatch) => {
   return {
