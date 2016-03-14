@@ -4,9 +4,9 @@ import { SIGNOUT_SUCCESS } from '../actions/signOut'
 const auth = (state = { loggedin: false, token: null }, action) => {
   switch (action.type) {
     case SIGNIN_SUCCESS:
-      return { loggedin: true, token: action.payload }
+      return { loggedIn: true, token: action.payload }
     case SIGNOUT_SUCCESS:
-      return { loggedin: false, token: null }
+      return { loggedIn: false, token: null }
     default:
       return state
   }
