@@ -2,6 +2,7 @@ import es6Promise from 'es6-promise'
 import fetch from 'isomorphic-fetch'
 import R from 'ramda'
 import { API_URL } from '../../../config/conf'
+import { getAuthToken } from './auth'
 
 es6Promise.polyfill() // activate polyfill
 
@@ -13,12 +14,26 @@ const _serializeParams = (params) => {
   }).join('&')
 }
 
+const buildHeaders = () => {
+  const header = {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json'
+  }
+  // Try to retrieve token
+  const token = getAuthToken()
+  if (token) {
+    header['Authorization'] = 'Bearer ' + token
+  }
+  return header
+}
+
 const Api = {
   get (url, params) {
     const strParams = _serializeParams(params)
     return fetch(API_URL + url, {
       method: 'get',
-      body: strParams
+      body: strParams,
+      headers: buildHeaders()
     }).then((response) => {
       if (R.contains(response.status, errorStatus)) {
         throw {
@@ -35,10 +50,7 @@ const Api = {
     const strParams = JSON.stringify(params)
     return fetch(API_URL + url, {
       method: 'post',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
+      headers: buildHeaders(),
       body: strParams
     }).then((response) => {
       if (R.contains(response.status, errorStatus)) {

@@ -10,6 +10,6 @@ export const removeAuthToken = () => {
   Cookies.remove(SECURITY_TOKEN)
 }
 
-export const getToken = () => {
+export const getAuthToken = () => {
   Cookies.get(SECURITY_TOKEN)
 }
