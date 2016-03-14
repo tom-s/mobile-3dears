@@ -26,7 +26,9 @@ const sendEmail = ({ email, subject, text, html }) => {
 
 export const sendEmailValidation = ({ email, emailConfirmationToken }) => {
   const subject = 'MixingEars: email validation'
-  const text = `Please confirm your email : ${ROOT_URL}/validation?email=${email}&token=${emailConfirmationToken}`
+  const encodedEmail = encodeURIComponent(email)
+  const encodedToken = encodeURIComponent(emailConfirmationToken)
+  const text = `Please confirm your email : ${ROOT_URL}/validation?email=${encodedEmail}&token=${encodedToken}`
   return sendEmail({
     email,
     subject,

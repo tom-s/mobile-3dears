@@ -24,7 +24,7 @@ publicRouter.post('/validation', function *() {
     user.emailConfirmationToken = null
     yield user.save()
     this.status = 200
-    this.body = 'Your account has been activated. Go to the website : <a href="http://localhost:3000/"> Click here </a>' // @todo: make it better
+    this.body = 'Your account has been activated'
   } else {
     this.throw(400)
   }
@@ -66,9 +66,7 @@ publicRouter.post('/user', function *() {
 
 publicRouter.post('/login', function *() {
   const ctx = this
-  console.log("will try passport auth")
   yield passport.authenticate('local', { session: false }, function * (err, user, info) {
-    console.log("res is", err, user)
     if (err) throw err
     if (!user) {
       ctx.status = 401
