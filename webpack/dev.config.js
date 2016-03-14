@@ -1,28 +1,29 @@
 const webpack = require('webpack')
 const path = require('path')
 const HtmlwebpackPlugin = require('html-webpack-plugin')
-
+const hotMiddlewareScript = 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=30000&reload=true'
 // Config
-const ROOT_PATH = path.resolve(__dirname) + '/../app/'
-const ASSETS_PATHS = ROOT_PATH + 'static/dist/'
+const ROOT_PATH = path.join(__dirname, '../app/')
+const DIST_PATH = path.join(__dirname, '../dist')
 const NODE_MODULES_PATH = ROOT_PATH + '../node_modules/'
-const HOST = 'localhost'
-const PORT = 8080
 
 module.exports = {
   devtool: 'cheap-eval-source-map',
   entry: {
     'main': [
-      'bootstrap-sass!' + ROOT_PATH + 'styles/bootstrap.config.js',
-      'font-awesome-webpack!' + ROOT_PATH + 'styles/font-awesome.config.js',
-      ROOT_PATH + 'src/index'
-    ]
+      'bootstrap-sass!' + path.join(ROOT_PATH, 'assets/styles/bootstrap.config.js'),
+      'font-awesome-webpack!' + path.join(ROOT_PATH, 'assets/styles/font-awesome.config.js'),
+      path.join(ROOT_PATH, 'src/index'),
+      hotMiddlewareScript
+    ],
+    vendor: ['react', 'react-dom', 'react-router-redux', 'react-router', 'redux-form', 'redux-logger', 'validator', 'isomorphic-fetch',
+    'redux', 'redux-thunk', 'redux-saga', 'lodash', 'ramda', hotMiddlewareScript]
   },
   output: {
-    path: ASSETS_PATHS,
+    path: DIST_PATH,
     filename: '[name]-[hash].js',
     chunkFilename: '[name]-[chunkhash].js',
-    publicPath: 'http://' + HOST + ':' + PORT + '/'
+    publicPath: '/'
   },
   module: {
     preLoaders: [
@@ -36,8 +37,7 @@ module.exports = {
       {
         test: /\.js?$/,
         exclude: /node_modules/,
-        loaders: ['react-hot', 'babel'],
-        noParse: [path.join(__dirname, '../config')]
+        loaders: ['react-hot', 'babel']
       },
       // One of the module requires babel loading (es7 decorators)
       {
@@ -56,7 +56,10 @@ module.exports = {
       { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=image/svg+xml' },
 
       // Images loader
-      { test: /\.(jpe?g|png|gif)$/i, loader: 'url?limit=10000' }
+      {
+        test: /\.(svg|gif|png|jpg|jpeg)$/,
+        loader: 'url-loader?name=[path][name].[ext]'
+      }
     ]},
   resolve: {
     alias: {
@@ -65,7 +68,8 @@ module.exports = {
     extensions: ['', '.js', '.jsx']
   },
   devServer: {
-    contentBase: path.resolve(ROOT_PATH, 'dist'),
+    contentBase: ROOT_PATH,
+    outputPath: DIST_PATH,
     historyApiFallback: true,
     hot: true,
     inline: true,
@@ -78,8 +82,13 @@ module.exports = {
     new webpack.NoErrorsPlugin(),
     new HtmlwebpackPlugin({
       title: 'Custom template',
-      template: 'app/index.ejs', // Load a custom template
+      template: 'app/index.html', // Load a custom template
       inject: 'body' // Inject all scripts into the body
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor',
+      minChunks: 5,
+      filename: 'vendor.bundle.[hash].js'
     })
   ]
 }

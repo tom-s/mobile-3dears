@@ -2,7 +2,7 @@ import React from 'react'
 import { GrowlerContainer } from 'flash-notification-react-redux'
 
 // Style
-import '../../styles/main.scss'
+import '../../assets/styles/main.scss'
 
 // Components
 import Header from './Header'
