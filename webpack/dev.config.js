@@ -2,10 +2,13 @@ const webpack = require('webpack')
 const path = require('path')
 const HtmlwebpackPlugin = require('html-webpack-plugin')
 const hotMiddlewareScript = 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=30000&reload=true'
+const GitSHAPlugin = require('git-sha-webpack-plugin')
+const WebpackNotifierPlugin = require('webpack-notifier')
+
 // Config
-const ROOT_PATH = path.join(__dirname, '../app/')
+const ROOT_PATH = path.join(__dirname, '../app')
 const DIST_PATH = path.join(__dirname, '../dist')
-const NODE_MODULES_PATH = ROOT_PATH + '../node_modules/'
+const NODE_MODULES_PATH = path.join(ROOT_PATH, '../node_modules')
 
 module.exports = {
   devtool: 'cheap-eval-source-map',
@@ -21,8 +24,8 @@ module.exports = {
   },
   output: {
     path: DIST_PATH,
-    filename: '[name]-[hash].js',
-    chunkFilename: '[name]-[chunkhash].js',
+    filename: '[name]-[chunkgitsha].js',
+    chunkFilename: '[name]-[chunkgitsha].js',
     publicPath: '/'
   },
   module: {
@@ -44,6 +47,7 @@ module.exports = {
         test: /node_modules\/flash-notification-react-redux\/.*.jsx?$/,
         loaders: ['babel']
       },
+      // Sass files loader (include bootstrap sass as well)
       {
         test: /\.scss$/,
         loader: 'style!css!sass?outputStyle=expanded=includePaths[]=' + NODE_MODULES_PATH + 'bootstrap-sass/assets/stylesheets/'
@@ -77,6 +81,8 @@ module.exports = {
   },
 
   plugins: [
+    new WebpackNotifierPlugin(),
+    new GitSHAPlugin({shaLength: 7}),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
