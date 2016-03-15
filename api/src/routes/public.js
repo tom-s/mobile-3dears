@@ -24,7 +24,7 @@ publicRouter.post('/validation', function *() {
     user.emailConfirmationToken = null
     yield user.save()
     this.status = 200
-    this.body = 'Your account has been activated'
+    this.body = { success: true }
   } else {
     this.throw(400)
   }
@@ -58,6 +58,7 @@ publicRouter.post('/user', function *() {
         emailConfirmationToken
       })
       this.status = 201
+      this.body = { success: true }
     } catch (err) {
       this.throw(500)
     }
