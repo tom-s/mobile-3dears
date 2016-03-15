@@ -1,12 +1,13 @@
 HIGH PRIORITY
 - faire le signout qui vide le cookie (saga) et change le state
+- ajouter message si personne essaie de se logger sans avoir validé
 - ajouter tests (sign in et signup)
 - enregistrer le referer lors de la redirection
 - gérer token expirés
 - ajouter liste of courses
 
 LOW PRIORITY
-
+- utiliser babel cli plutot que babel node
 - faire reset password
 - s'arranger pour ne plus avoir route.dev et route.prod (regarder ce qu'a fait sergei)
 - ajouter polymorphisme
