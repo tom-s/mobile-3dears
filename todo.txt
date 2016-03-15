@@ -1,7 +1,6 @@
 HIGH PRIORITY
-- faire le signout qui vide le cookie (saga) et change le state
+- ajouter tests (sign in, signout, et signup)
 - ajouter message si personne essaie de se logger sans avoir validé
-- ajouter tests (sign in et signup)
 - enregistrer le referer lors de la redirection
 - gérer token expirés
 - ajouter liste of courses
