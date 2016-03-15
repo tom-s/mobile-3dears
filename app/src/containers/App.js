@@ -4,8 +4,9 @@ import App from '../components/App'
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    signOut: () => {
-      dispatch({ type: SIGNOUT_REQUEST})
+    signOut: (e) => {
+      e.preventDefault()
+      dispatch({ type: SIGNOUT_REQUEST })
     }
   }
 }
