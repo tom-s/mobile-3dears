@@ -4,7 +4,7 @@ import { takeEvery } from 'redux-saga'
 import { SIGNIN_REQUEST, SIGNIN_ERROR, SIGNIN_SUCCESS } from '../actions/signIn'
 import { signInApi } from '../services/api'
 import { setAuthToken } from '../services/auth'
-import { GrowlerActions } from 'flash-notification-react-redux'
+import * as GrowlerActions from '../actions/growler'
 
 const notifySuccess = () => GrowlerActions.showGrowlerSuccess('You are now logged in')
 const notifyError = () => GrowlerActions.showGrowlerError('Invalid username/password pair')

@@ -1,13 +1,13 @@
-import signin from './signin'
-import signup from './signup'
-import signout from './signout'
+import signIn from './signIn'
+import signUp from './signUp'
+import signOut from './signOut'
 import emailValidation from './emailValidation'
 import { fork } from 'redux-saga/effects'
 
 function * root () {
-  yield fork(signin)
-  yield fork(signup)
-  yield fork(signout)
+  yield fork(signIn)
+  yield fork(signUp)
+  yield fork(signOut)
   yield fork(emailValidation)
 }
 

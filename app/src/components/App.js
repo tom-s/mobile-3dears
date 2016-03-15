@@ -1,5 +1,5 @@
 import React from 'react'
-import { GrowlerContainer } from 'flash-notification-react-redux'
+import Growler from '../containers/Growler'
 
 // Style
 import '../../assets/styles/main.scss'
@@ -16,7 +16,7 @@ const App = (props) => {
       <Header loggedIn={loggedIn} signOut={signOut}/>
       {children}
       <Footer />
-      <GrowlerContainer shownFor="5000"/>
+      <Growler shownFor="5000"/>
     </div>
   )
 }

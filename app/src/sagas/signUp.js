@@ -3,7 +3,7 @@ import { push } from 'react-router-redux'
 import { takeEvery } from 'redux-saga'
 import { SIGNUP_REQUEST, SIGNUP_SUCCESS, SIGNUP_ERROR } from '../actions/signUp'
 import { signUpApi } from '../services/api'
-import { GrowlerActions } from 'flash-notification-react-redux'
+import * as GrowlerActions from '../actions/growler'
 
 const notifySuccess = () => GrowlerActions.showGrowlerSuccess('Your account has been created. Please check your emails and validate your account')
 const notifyAlreadySignedUpError = () => GrowlerActions.showGrowlerError('An account for this email has already been created. Try signing in !')

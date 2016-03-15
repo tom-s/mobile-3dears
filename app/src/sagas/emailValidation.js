@@ -3,7 +3,7 @@ import { push } from 'react-router-redux'
 import { takeEvery } from 'redux-saga'
 import { EMAIL_VALIDATE_REQUEST, EMAIL_VALIDATE_ERROR, EMAIL_VALIDATE_SUCCESS } from '../actions/emailValidation'
 import { emailValidateApi } from '../services/api'
-import { GrowlerActions } from 'flash-notification-react-redux'
+import * as GrowlerActions from '../actions/growler'
 
 const notifySuccess = () => GrowlerActions.showGrowlerSuccess('Your account is now activated, sign in and enjoy !')
 const notifyError = () => GrowlerActions.showGrowlerError('Impossible to validate your account, the link must have expired')

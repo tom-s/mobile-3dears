@@ -1,7 +1,7 @@
 import React from 'react'
 import {reduxForm} from 'redux-form'
 import {validate} from './validate'
-import FormError from '../common/formError'
+import FormError from '../common/FormError'
 
 let SignUpForm = (props) => {
   const { fields: { email, password, passwordConfirmation }, handleSubmit, invalid } = props

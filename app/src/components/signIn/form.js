@@ -2,7 +2,7 @@ import React from 'react'
 import {reduxForm} from 'redux-form'
 import {Link} from 'react-router'
 import {validate} from './validate'
-import FormError from '../common/formError'
+import FormError from '../common/FormError'
 
 let SignInForm = (props) => {
   const { fields: { email, password }, handleSubmit, invalid } = props

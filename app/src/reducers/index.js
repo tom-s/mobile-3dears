@@ -1,12 +1,12 @@
 import { routerReducer as routing } from 'react-router-redux'
 import { reducer as formReducer } from 'redux-form'
-import auth from './auth'
 import { combineReducers } from 'redux'
-import { GrowlerReducer } from 'flash-notification-react-redux'
+import auth from './auth'
+import growler from './growler'
 
 const rootReducer = combineReducers({
   form: formReducer,
-  growler: GrowlerReducer,
+  growler,
   routing,
   auth
 })

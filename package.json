@@ -52,6 +52,7 @@
     "babel-preset-stage-0": "^6.3.13",
     "bootstrap-sass": "^3.3.6",
     "bootstrap-sass-loader": "^1.0.10",
+    "classnames": "^2.2.3",
     "co": "^4.6.0",
     "co-body": "^4.0.0",
     "config": "^1.19.0",
