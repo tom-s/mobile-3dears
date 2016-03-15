@@ -1,5 +1,5 @@
 HIGH PRIORITY
-- ajouter tests (sign in, signout, et signup)
+- finir tests (sign in, signout, et signup)
 - ajouter message si personne essaie de se logger sans avoir validé
 - enregistrer le referer lors de la redirection
 - gérer token expirés

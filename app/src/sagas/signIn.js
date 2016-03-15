@@ -6,8 +6,8 @@ import { signInApi } from '../services/api'
 import { setAuthToken } from '../services/auth'
 import * as GrowlerActions from '../actions/growler'
 
-const notifySuccess = () => GrowlerActions.showGrowlerSuccess('You are now logged in')
-const notifyError = () => GrowlerActions.showGrowlerError('Invalid username/password pair')
+export const notifySuccess = () => GrowlerActions.showGrowlerSuccess('You are now logged in')
+export const notifyError = () => GrowlerActions.showGrowlerError('Invalid username/password pair')
 
 export function * loginSaga ({ payload }) {
   const { email, password } = payload
