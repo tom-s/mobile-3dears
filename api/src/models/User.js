@@ -21,6 +21,13 @@ const UserSchema = new mongoose.Schema({
       ref: 'Achievement'
     }
   ],
+  examsResults:[{
+    score: { type: Number, default: 0, index: false },
+    _exam: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Exam'
+    }
+  }],
   progress:[{
     percentage: { type: Number, default: 0, index: false },
     _course: {
