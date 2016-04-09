@@ -1,4 +1,5 @@
 HIGH PRIORITY
+- faire reset password
 - finir tests (sign in, signout, et signup)
 - ajouter message si personne essaie de se logger sans avoir validé
 - enregistrer le referer lors de la redirection
@@ -7,7 +8,6 @@ HIGH PRIORITY
 
 LOW PRIORITY
 - utiliser babel cli plutot que babel node
-- faire reset password
 - s'arranger pour ne plus avoir route.dev et route.prod (regarder ce qu'a fait sergei)
 - ajouter polymorphisme
 - faire build webpack
