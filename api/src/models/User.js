@@ -7,12 +7,27 @@ const UserSchema = new mongoose.Schema({
   emailConfirmationToken: { type: String, default: '', require: true, unique: true, index: false },
   emailConfirmed: { type: Boolean, default: false, index: false },
   score: { type: Number, default: 0, index: false },
-  powerUps:[
+  longestCorrectAnswersStreak: { type: Number, default: 0, index: false },
+  currentCorrectAnswersStreak: { type: Number, default: 0, index: false },
+  _powerUps:[
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'PowerUp'
     }
-  ]
+  ],
+  _achievements:[
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Achievement'
+    }
+  ],
+  progress:[{
+    percentage: { type: Number, default: 0, index: false },
+    _course: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Course'
+    }
+  }]
 }, {
   timestamps: true
 })
