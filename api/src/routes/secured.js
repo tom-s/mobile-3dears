@@ -1,6 +1,6 @@
 import Router from 'koa-router'
 import passport from 'passport'
-
+import R from 'ramda'
 import User from '../models/User'
 
 const securedRouter = new Router()
@@ -22,7 +22,7 @@ const authed = function *(next) {
 
 // Routes
 securedRouter.get('/init', authed, function *() {
-  const user = yield User.find({ _id: this.user.id })
+  const data = yield User.findOne({ _id: this.user.id })
     .populate('powerUps')
     .populate('achievements')
     .populate('trainingResults.training')
@@ -30,9 +30,18 @@ securedRouter.get('/init', authed, function *() {
     .populate('progress.courseType')
      // retrieve all user data: progress, achievements, etc
 
-  if (user) {
+  if (data) {
     this.status = 200
-    this.body = { user }
+
+    // Organise data
+    const user = R.pick(['_id', 'username', 'password'], data)
+    const achievements = data.achievements
+    const powerUps = data.powerUps
+    const progress = data.progress
+    const trainingResults = data.trainingResults
+    const examResults = data.examResults
+
+    this.body = { user, achievements, powerUps, progress, trainingResults, examResults }
   } else {
     this.throw(400)
   }
