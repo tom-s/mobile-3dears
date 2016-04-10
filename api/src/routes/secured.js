@@ -34,7 +34,7 @@ securedRouter.get('/init', authed, function *() {
     this.status = 200
 
     // Organise data
-    const user = R.pick(['_id', 'username', 'password'], data)
+    const user = R.pick(['_id', 'username'], data)
     const achievements = data.achievements
     const powerUps = data.powerUps
     const progress = data.progress

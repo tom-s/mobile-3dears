@@ -3,14 +3,12 @@ import { push } from 'react-router-redux'
 import { takeEvery } from 'redux-saga'
 import { SIGNOUT_REQUEST, SIGNOUT_SUCCESS } from '../actions/signOut'
 import { removeAuthToken } from '../services/auth'
-import * as GrowlerActions from '../actions/growler'
-
-const notifySuccess = () => GrowlerActions.showGrowlerSuccess('You are now logged out. Come back soon !')
+import { NOTIFY_SUCCESS } from '../actions/notification'
 
 export function * logoutSaga ({ payload }) {
   removeAuthToken()
   yield put({ type: SIGNOUT_SUCCESS })
-  yield put(notifySuccess())
+  yield put({ type: NOTIFY_SUCCESS, payload: 'You are now logged out. Come back soon !' })
   yield put(push('/'))
 }
 
