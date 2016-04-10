@@ -3,6 +3,7 @@ import { Route } from 'react-router'
 import App from './containers/App'
 import { getAuthToken } from './services/auth'
 import { SIGNIN_SUCCESS } from './actions/signIn'
+import { INIT_REQUEST } from './actions/init'
 import { Promise } from 'es6-promise'
 
 // Pages
@@ -22,6 +23,7 @@ export default(store) => {
     const token = getAuthToken()
     if (token) {
       store.dispatch({ type: SIGNIN_SUCCESS, payload: token })
+      store.dispatch({ type: INIT_REQUEST, payload: null })
     }
     return delay(500)
   }
@@ -30,7 +32,6 @@ export default(store) => {
     const checkAuth = () => {
       const { auth:  { loggedIn } } = store.getState()
       if (!loggedIn) {
-        console.log("location", nextState.location)
         replace('/')
       }
       cb()

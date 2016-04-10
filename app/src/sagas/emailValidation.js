@@ -11,7 +11,6 @@ const notifyError = () => GrowlerActions.showGrowlerError('Impossible to validat
 export function * emailValidationSaga ({ payload }) {
   const { email, token } = payload
   try {
-    console.log('try to validate', email, token)
     yield call(emailValidateApi, email, token)
     yield put({ type: EMAIL_VALIDATE_SUCCESS })
     yield put(notifySuccess())

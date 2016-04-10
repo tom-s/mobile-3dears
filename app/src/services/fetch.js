@@ -28,11 +28,10 @@ const buildHeaders = () => {
 }
 
 const Api = {
-  get (url, params) {
+  get (url, params = {}) {
     const strParams = _serializeParams(params)
-    return fetch(API_URL + url, {
+    return fetch(API_URL + url + '?' + strParams, {
       method: 'get',
-      body: strParams,
       headers: buildHeaders()
     }).then((response) => {
       if (R.contains(response.status, errorStatus)) {
@@ -46,7 +45,7 @@ const Api = {
     })
   },
 
-  post (url, params) {
+  post (url, params = {}) {
     const strParams = JSON.stringify(params)
     return fetch(API_URL + url, {
       method: 'post',

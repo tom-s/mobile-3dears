@@ -21,7 +21,7 @@ const authed = function *(next) {
 }
 
 // Routes
-securedRouter.get('/app', authed, function *() {
+securedRouter.get('/init', authed, function *() {
   const user = yield User.find({ _id: this.user.id })
     .populate('powerUps')
     .populate('achievements')
@@ -30,7 +30,6 @@ securedRouter.get('/app', authed, function *() {
     .populate('progress.courseType')
      // retrieve all user data: progress, achievements, etc
 
-console.log("USER", user)
   if (user) {
     this.status = 200
     this.body = { user }
