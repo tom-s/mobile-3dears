@@ -34,7 +34,7 @@ passport.use(new LocalStrategy((username, password, done) => {
     } else {
       // Check password
       if (passwordHash.verify(password, user.password)) {
-        user = R.omit(['password', 'emailConfirmationToken', 'emailConfirmed'], user) // @todo: replace with pick
+        user = R.pick(['id', 'email', 'username'], user)
         done(null, user)
       } else {
         done(null, false)
@@ -54,7 +54,9 @@ passport.use(new LocalStrategy((username, password, done) => {
 passport.use(new BearerStrategy((accessToken, done) => {
   jwt.verify(accessToken, TOKEN_SECRET, (err, decoded) => {
     if (err) { return done(err) }
-    done(null, decoded, { scope: 'all' })
+    User.findOne({ username: decoded.username }, (err, user) => {
+      done(null, user, { scope: 'all' })
+    })
   })
 
   /*

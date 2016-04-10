@@ -11,6 +11,15 @@ import { SESSION_SECRET } from '../../config/conf' // todo
 import publicRouter from './routes/public'
 import securedRouter from './routes/secured'
 
+// Models
+import Achievement from './models/Achievement'
+import Course from './models/Course'
+import CourseType from './models/CourseType'
+import Exam from './models/Exam'
+import PowerUp from './models/PowerUp'
+import Training from './models/Training'
+import User from './models/User'
+
 /* DB connection */
 
 mongoose.connect('mongodb://DannyDane:grimreever@ds059215.mongolab.com:59215/3dears')

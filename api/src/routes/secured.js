@@ -1,6 +1,8 @@
 import Router from 'koa-router'
 import passport from 'passport'
 
+import User from '../models/User'
+
 const securedRouter = new Router()
 
 const authed = function *(next) {
@@ -8,11 +10,8 @@ const authed = function *(next) {
   try {
     yield passport.authenticate('bearer', { session: false }, function * (err, user, info) {
       if (err) throw err
-      // always include user in body
-      ctx.body = {
-        user: {
-          id: user.id
-        }
+      ctx.user = {
+        id: user.id
       }
     })
     yield next
@@ -23,8 +22,21 @@ const authed = function *(next) {
 
 // Routes
 securedRouter.get('/app', authed, function *() {
-  const body = { data: 'Secured Zone: koa-tutorial' }
-  this.body = Object.assign({}, this.body, body)
+  const user = yield User.find({ _id: this.user.id })
+    .populate('powerUps')
+    .populate('achievements')
+    .populate('trainingResults.training')
+    .populate('progress.course')
+    .populate('progress.courseType')
+     // retrieve all user data: progress, achievements, etc
+
+console.log("USER", user)
+  if (user) {
+    this.status = 200
+    this.body = { user }
+  } else {
+    this.throw(400)
+  }
 })
 
 export default securedRouter

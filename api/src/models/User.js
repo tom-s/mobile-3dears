@@ -9,30 +9,41 @@ const UserSchema = new mongoose.Schema({
   score: { type: Number, default: 0, index: false },
   longestCorrectAnswersStreak: { type: Number, default: 0, index: false },
   currentCorrectAnswersStreak: { type: Number, default: 0, index: false },
-  _powerUps:[
+  powerUps:[
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'PowerUp'
     }
   ],
-  _achievements:[
+  achievements:[
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Achievement'
     }
   ],
+  trainingResults:[{
+    score: { type: Number, default: 0, index: false },
+    training: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Training'
+    }
+  }],
   examsResults:[{
     score: { type: Number, default: 0, index: false },
-    _exam: {
+    exam: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Exam'
     }
   }],
   progress:[{
     percentage: { type: Number, default: 0, index: false },
-    _course: {
+    course: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Course'
+    },
+    courseType: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'CourseType'
     }
   }]
 }, {

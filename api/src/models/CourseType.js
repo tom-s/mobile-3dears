@@ -7,4 +7,4 @@ const CourseTypeSchema = new mongoose.Schema({
   timestamps: true
 })
 
-export default mongoose.model('CourseLevel', CourseTypeSchema)
+export default mongoose.model('CourseType', CourseTypeSchema)
