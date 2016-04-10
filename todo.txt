@@ -1,13 +1,18 @@
 HIGH PRIORITY
+- faire route pour les différents courses (/type/)
+- faire affichage des différents courses et training
+- faire route training
+- faire affichage des exams
+
+MEDIUM PRIORITY
 - faire reset password
-- finir tests (sign in, signout, et signup)
+- finir tests des sagas
 - ajouter message si personne essaie de se logger sans avoir validé
-- enregistrer le referer lors de la redirection
+- enregistrer le referer lors de la redirection (pour redirection apres login)
 - gérer token expirés
-- ajouter liste of courses
+
 
 LOW PRIORITY
 - utiliser babel cli plutot que babel node
-- s'arranger pour ne plus avoir route.dev et route.prod (regarder ce qu'a fait sergei)
 - ajouter polymorphisme
-- faire build webpack
+- faire build prod webpack
