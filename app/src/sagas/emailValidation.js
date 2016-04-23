@@ -1,8 +1,8 @@
 import { call, put } from 'redux-saga/effects'
 import { push } from 'react-router-redux'
 import { takeEvery } from 'redux-saga'
-import { EMAIL_VALIDATE_REQUEST, EMAIL_VALIDATE_ERROR, EMAIL_VALIDATE_SUCCESS } from '../actions/emailValidation'
 import { emailValidateApi } from '../services/api'
+import { EMAIL_VALIDATE_REQUEST, EMAIL_VALIDATE_ERROR, EMAIL_VALIDATE_SUCCESS } from '../actions/emailValidation'
 import { NOTIFY_ERROR, NOTIFY_SUCCESS } from '../actions/notification'
 
 export function * emailValidationSaga ({ payload }) {

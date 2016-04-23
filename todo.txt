@@ -1,16 +1,11 @@
 HIGH PRIORITY
-- faire route pour les différents courses (/type/)
-- faire affichage des différents courses et training
-- faire route training
-- faire affichage des exams
+
 
 MEDIUM PRIORITY
 - faire reset password
 - finir tests des sagas
 - ajouter message si personne essaie de se logger sans avoir validé
-- enregistrer le referer lors de la redirection (pour redirection apres login)
 - gérer token expirés
-
 
 LOW PRIORITY
 - utiliser babel cli plutot que babel node

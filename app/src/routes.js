@@ -8,12 +8,15 @@ import { Promise } from 'es6-promise'
 
 // Pages
 import AboutPage from './containers/pages/About'
+import DashboardPage from './containers/pages/Dashboard'
+import EmailValidationPage from './containers/pages/EmailValidation'
 import HomePage from './containers/pages/Home'
 import PricingPage from './containers/pages/Pricing'
 import SignInPage from './containers/pages/SignIn'
 import SignUpPage from './containers/pages/SignUp'
-import EmailValidationPage from './containers/pages/EmailValidation'
-import DashboardPage from './containers/pages/DashboardPage'
+import TrainingPage from './containers/pages/Training'
+import UrlErrorPage from './containers/pages/UrlError'
+import { URL_AUTH_ERROR } from './actions/url'
 
 export default(store) => {
 
@@ -32,7 +35,7 @@ export default(store) => {
     const checkAuth = () => {
       const { auth:  { loggedIn } } = store.getState()
       if (!loggedIn) {
-        replace('/')
+        store.dispatch({ type: URL_AUTH_ERROR })
       }
       cb()
     }
@@ -54,6 +57,8 @@ export default(store) => {
       <Route path="/sign_up" component={SignUpPage} />
       <Route path="/validation" component={EmailValidationPage} />
       <Route path="/dashboard" onEnter={loginRequired} component={DashboardPage} />
+      <Route path="/training/:type/:exerciseId" onEnter={loginRequired} component={TrainingPage} />
+      <Route path="*" component={UrlErrorPage}/>
     </Route>
   )
 }
