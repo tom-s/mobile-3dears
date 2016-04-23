@@ -15,6 +15,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       }
     })
   }
+
+  return {}
 }
 
 const mapStateToProps = (state, ownProps) => {
