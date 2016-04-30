@@ -1,6 +1,11 @@
 
 window.AudioContext = window.AudioContext||window.webkitAudioContext
 
+// TODO
+// find a way to play original sound (dupplicate sources ?)
+// faire un mechanisme pour preloader et mettre en cache les sons
+// faire un loading
+
 let context
 let sources = {}
 let compressors = {}
