@@ -81,9 +81,7 @@ const questions = [
   question2
 ]
 
-const findAsset = (assetId) => {
-  return find(propEq('id', assetId))(allAssets) 
-}
+const findAsset = (assetId) => find(propEq('id', assetId))(allAssets) 
 
 const extractAssetsFromQuestions = pipe(
   map(prop('sources')),
