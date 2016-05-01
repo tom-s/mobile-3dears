@@ -1,6 +1,6 @@
 import es6Promise from 'es6-promise'
 import fetch from 'isomorphic-fetch'
-import R from 'ramda'
+import { contains } from 'ramda'
 import { API_URL } from '../../../config/conf'
 import { getAuthToken } from './auth'
 
@@ -34,7 +34,7 @@ const Api = {
       method: 'get',
       headers: buildHeaders()
     }).then((response) => {
-      if (R.contains(response.status, errorStatus)) {
+      if (contains(response.status, errorStatus)) {
         throw {
           status: response.status,
           message: response.body
@@ -52,7 +52,7 @@ const Api = {
       headers: buildHeaders(),
       body: strParams
     }).then((response) => {
-      if (R.contains(response.status, errorStatus)) {
+      if (contains(response.status, errorStatus)) {
         throw {
           status: response.status,
           message: response.body

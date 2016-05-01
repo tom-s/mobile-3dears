@@ -1,4 +1,4 @@
-import R from 'ramda'
+import { pipe, map, prop, flatten, uniq } from 'ramda'
 import { ASSET_TYPES } from '../services/assets'
 
 const allAssets = [
@@ -81,11 +81,11 @@ const questions = [
   question2
 ]
 
-const extractAssetsIdsFromQuestions = R.pipe(
-  R.map(R.prop('sources')),
-  R.flatten,
-  R.map(R.prop('assetId')),
-  R.uniq
+const extractAssetsIdsFromQuestions = pipe(
+  map(prop('sources')),
+  flatten,
+  map(prop('assetId')),
+  uniq
 )
 
 // Extract exercise assets
