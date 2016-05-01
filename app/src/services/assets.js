@@ -38,6 +38,7 @@ export const loadAssets = (assets) => {
 /*******************************/
 /* Asset type specific : AUDIO */
 /*******************************/
+// TODO: replace with fetch
 const loadAudio = ({ id, url}) => {
   return new Promise((resolve, reject) => {
     let request = new XMLHttpRequest()

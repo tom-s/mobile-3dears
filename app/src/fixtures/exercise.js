@@ -81,15 +81,18 @@ const questions = [
   question2
 ]
 
-const sources = R.uniq(
-  questions.map(
-    question => question.sources.map(source => source.assetId)
-   )
-  ).map(assetId => allAssets.find(asset => asset.id === assetId)
+const extractAssetsIdsFromQuestions = R.pipe(
+  R.map(R.prop('sources')),
+  R.flatten,
+  R.map(R.prop('assetId')),
+  R.uniq
 )
 
+// Extract exercise assets
+const assets = extractAssetsIdsFromQuestions(questions).map(assetId => allAssets.find(asset => asset.id === assetId))
+
 const exercise = {
-  sources,
+  assets,
   questions
 }
 
