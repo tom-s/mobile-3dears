@@ -1,4 +1,4 @@
-import { pipe, map, prop, flatten, uniq } from 'ramda'
+import { pipe, map, prop, flatten, uniq, propEq, find } from 'ramda'
 import { ASSET_TYPES } from '../services/assets'
 
 const allAssets = [
@@ -81,15 +81,20 @@ const questions = [
   question2
 ]
 
-const extractAssetsIdsFromQuestions = pipe(
+const findAsset = (assetId) => {
+  return find(propEq('id', assetId))(allAssets) 
+}
+
+const extractAssetsFromQuestions = pipe(
   map(prop('sources')),
   flatten,
   map(prop('assetId')),
-  uniq
+  uniq,
+  map(findAsset)
 )
 
 // Extract exercise assets
-const assets = extractAssetsIdsFromQuestions(questions).map(assetId => allAssets.find(asset => asset.id === assetId))
+const assets = extractAssetsFromQuestions(questions)
 
 const exercise = {
   assets,
