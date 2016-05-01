@@ -1,25 +1,40 @@
 import R from 'ramda'
 
+const allAssets = [
+  {
+    id: 'guitarLoop1',
+    url: 'guitarLoop1.wav'
+  },
+  { 
+    id: 'guitarLoop2',
+    url: 'guitarLoop2.wav'
+  },
+  {
+    id: 'pianoLoop1',
+    url: 'pianoLoop1.wav'
+  }
+]
+
 const question1 = {
   id: 1,
   question: 'Which sound is being compressed ? ',
   sources: [
      {
       id: 'guitar',
+      assetId: 'guitarLoop1',
       compression: {
         threshold: 0
       },
-      url: 'guitar.wav',
       gain: {
         value: 0
       }
     },
-   {
-     id: 'piano',
+    {
+      id: 'piano',
+      assetId: 'guitarLoop2',
       compression: {
         threshold: -50
       },
-      url: 'pinao.wav',
       gain: {
         value: 20
       }
@@ -34,20 +49,20 @@ const question2 = {
   sources: [
      {
       id: 'guitar',
+      assetId: 'guitarLoop1',
       compression: {
         threshold: -20
       },
-      url: 'guitar.wav',
       gain: {
         value: 10
       }
     },
-   {
-     id: 'piano',
+    {
+      id: 'piano',
+      assetId: 'pianoLoop1',
       compression: {
         threshold: 0
       },
-      url: 'pinao.wav',
       gain: {
         value: 0
       }
@@ -56,12 +71,19 @@ const question2 = {
   correctAnswers: ['piano']
 }
 
+
 const questions = [
   question1,
   question2
 ]
 
-const sources = R.uniq(exercise.map(exercise => exercise.sources.map(source => source)))
+// 1 - recupère toutes les sources + uniq them + get Asset
+const sources = R.uniq(
+  questions.map(
+    question => question.sources.map(source => source.assetId)
+   )
+  ).map(assetId => allAssets.find(asset => asset.id === assetId)
+)
 
 const exercise = {
   sources,

@@ -15,7 +15,11 @@ const clearContext = () => {
  sources = {}
 }
 
-const loadSound = (id, url, compressi) => {
+const loadSounds = (sounds) => {
+  // Check
+}
+
+const loadSound = (id, url) => {
   //todo: refacto to return a promise, it won't work with redux saga that way
   const request = new XMLHttpRequest()
   request.open('GET', url, true)
@@ -64,7 +68,7 @@ const addGain = (compressorId, gainValue) => {
 
 const orchestrator = () => ({
   clearContext,
-  loadSound,
+  loadSounds,
   playSound,
   stopSound,
   addCompressor,

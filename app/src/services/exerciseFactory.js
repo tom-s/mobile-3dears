@@ -1,12 +1,5 @@
-export const getExercise = () => {
-        
-}
+import exercise from './exercise'
 
-const exercises = [
-  {
-    'question': 'Find which effect is applied to each track',
-    'tracks': [
-      
-    ]
-  }
-]
+export const getExercise = () => {
+  return exercise       
+}
