@@ -9,10 +9,10 @@ export const ASSET_TYPES = {
 /*************** */
 const getAssetPath = (type, id) => `asset.${type}.${id}`
 
-const loadLSasset = (type, id) => ls.get(getAssetPath(type, id))
-
+const loadLSasset = (type, id) => (ls.enabled) ? ls.get(getAssetPath(type, id)) : null
+  
 const saveLSasset = (type, id, val) => {
-  ls.set(getAssetPath(type, id), val)  
+  if (ls.enabled) ls.set(getAssetPath(type, id), val)  
 }
 
 /********* */
@@ -27,7 +27,7 @@ const loadAsset = (asset) => {
   // Otherwise do specific loading
   switch (type) {
     case ASSET_TYPES.AUDIO:
-      return loadAudio(asset)
+      return loadAudio(asset).then(saveLSasset)
   }
 }
 
@@ -47,7 +47,6 @@ const loadAudio = ({ id, url}) => {
     // Decode asynchronously
     request.onload = () => {
       context.decodeAudioData(request.response, (buffer) => {
-        saveLSasset(buffer) // store in local storage
         resolve(buffer)
       })
     }
