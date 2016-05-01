@@ -1,17 +1,21 @@
 import R from 'ramda'
+import { ASSET_TYPES } from '../services/assets'
 
 const allAssets = [
   {
     id: 'guitarLoop1',
-    url: 'guitarLoop1.wav'
+    url: 'guitarLoop1.wav',
+    type: ASSET_TYPES.AUDIO
   },
   { 
     id: 'guitarLoop2',
-    url: 'guitarLoop2.wav'
+    url: 'guitarLoop2.wav',
+    type: ASSET_TYPES.AUDIO
   },
   {
     id: 'pianoLoop1',
-    url: 'pianoLoop1.wav'
+    url: 'pianoLoop1.wav',
+    type: ASSET_TYPES.AUDIO
   }
 ]
 
@@ -77,7 +81,6 @@ const questions = [
   question2
 ]
 
-// 1 - recupère toutes les sources + uniq them + get Asset
 const sources = R.uniq(
   questions.map(
     question => question.sources.map(source => source.assetId)

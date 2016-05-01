@@ -7,31 +7,13 @@ window.AudioContext = window.AudioContext||window.webkitAudioContext
 // faire un loading
 
 let context
+let assets
 let sources = {}
 let compressors = {}
 
 const clearContext = () => {
  context = new AudioContext()
  sources = {}
-}
-
-const loadSounds = (sounds) => {
-  // Check
-}
-
-const loadSound = (id, url) => {
-  //todo: refacto to return a promise, it won't work with redux saga that way
-  const request = new XMLHttpRequest()
-  request.open('GET', url, true)
-  request.responseType = 'arraybuffer'
-
-  // Decode asynchronously
-  request.onload = () => {
-    context.decodeAudioData(request.response, (buffer) => {
-      sources[id] = { buffer, connections: [context.destination] }
-    })
-  }
-  request.send()
 }
 
 const playSound = (id) => {
@@ -68,7 +50,6 @@ const addGain = (compressorId, gainValue) => {
 
 const orchestrator = () => ({
   clearContext,
-  loadSounds,
   playSound,
   stopSound,
   addCompressor,

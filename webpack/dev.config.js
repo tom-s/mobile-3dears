@@ -13,6 +13,7 @@ module.exports = {
   devtool: 'cheap-source-map',//'cheap-eval-source-map',
   entry: {
     'main': [
+      'babel-polyfill',
       'bootstrap-sass!' + path.join(ROOT_PATH, 'assets/styles/bootstrap.config.js'),
       'font-awesome-webpack!' + path.join(ROOT_PATH, 'assets/styles/font-awesome.config.js'),
       path.join(ROOT_PATH, 'src/index')
