@@ -1,16 +1,26 @@
-import React from 'react'
+import React, { Component } from 'react'
 
-const Training = (props) => {
-  const { type } = props
-  console.log("type", type)
+class Training extends Component {
+  constructor (props) {
+    super(props)
+  }
 
-  return (
-    <section className="Training">
-      <div className="container">
-        { type }
-      </div>
-    </section>
-  )
+  componentDidMount() {
+    const { exerciseId, type, loadExercise } = this.props
+    loadExercise(type, exerciseId)
+  }
+
+  render() {
+    const { type } = this.props
+
+    return (
+      <section className="Training">
+        <div className="container">
+          { type }
+        </div>
+      </section>
+    )
+  }
 }
 
 export default Training
