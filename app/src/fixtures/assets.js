@@ -3,17 +3,17 @@ import { ASSET_TYPES } from '../services/assets'
 const assets = [
   {
     id: 'guitarLoop1',
-    url: 'guitarLoop1.wav',
+    url: 'kick.wav',
     type: ASSET_TYPES.AUDIO
   },
   {
     id: 'guitarLoop2',
-    url: 'guitarLoop2.wav',
+    url: 'snare.wav',
     type: ASSET_TYPES.AUDIO
   },
   {
     id: 'pianoLoop1',
-    url: 'pianoLoop1.wav',
+    url: 'piano.wav',
     type: ASSET_TYPES.AUDIO
   }
 ]

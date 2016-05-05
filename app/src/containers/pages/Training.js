@@ -1,13 +1,13 @@
 import { connect } from 'react-redux'
-import Training from '../../components/Training'
-import { EXERCISE_REQUEST } from '../../actions/training'
+import Training from 'components/Training'
+import { EXERCISE_LOAD_REQUEST } from 'actions/training'
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   const { params: { type } } = ownProps
 
   return {
     loadExercise: (type, id) => {
-      dispatch({ type: EXERCISE_REQUEST, payload: { type, id }})
+      dispatch({ type: EXERCISE_LOAD_REQUEST, payload: { type, id }})
     }
   }
 }

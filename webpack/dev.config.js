@@ -65,7 +65,8 @@ module.exports = {
       }
     ]},
   resolve: {
-    extensions: ['', '.js', '.jsx']
+    extensions: ['', '.js', '.jsx'],
+     modulesDirectories: ['app/src', 'node_modules']
   },
   devServer: {
     contentBase: ROOT_PATH,

@@ -1,4 +1,3 @@
-import { apply, curry } from 'ramda'
 import { Promise } from 'es6-promise'
 import { SIGNIN_SUCCESS } from '../actions/signIn'
 import { INIT_REQUEST } from '../actions/init'
@@ -10,7 +9,6 @@ const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms))
 
 const loadAuth = store => () => {
   const token = getAuthToken()
-  console.log("token ?", token)
   if (token) {
     store.dispatch({ type: SIGNIN_SUCCESS, payload: token })
     store.dispatch({ type: INIT_REQUEST, payload: null })
@@ -37,8 +35,8 @@ const loginRequired = store => ( nextState, replace, cb) => {
 
 const checkTraining = store => ( nextState, replace, cb) => {
   const { params: { type, exerciseId }, location: { pathname } } = nextState
-  // Redirect to dashboard if training type is not valid
-  if (!TRAINING_TYPES[type]) {
+  // Redirect to dashboard if training type is not valid or id not provided
+  if (!TRAINING_TYPES[type] || !exerciseId) {
     store.dispatch({
       type: URL_ERROR,
       payload: {

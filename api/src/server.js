@@ -3,6 +3,7 @@ import logger from 'koa-logger'
 import session from 'koa-session'
 import cors from 'koa-cors'
 import bodyParser from 'koa-bodyparser'
+import serve from 'koa-static-folder'
 import passport from './auth'
 import mongoose from 'mongoose'
 import { SESSION_SECRET } from '../../config/conf' // todo
@@ -36,6 +37,9 @@ app.use(logger())
 
 // Cors
 app.use(cors())
+
+// Serve static assets
+app.use(serve('./public', {maxage: 5 * 60 * 1000}))
 
 // Sessions
 app.keys = [SESSION_SECRET]
