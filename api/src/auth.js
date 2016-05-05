@@ -4,7 +4,7 @@ import passportBearer from 'passport-http-bearer'
 import jwt from 'jsonwebtoken'
 import passwordHash from 'password-hash'
 import R from 'ramda'
-import { TOKEN_SECRET } from '../../config/conf'
+import { TOKEN_SECRET } from '../config/conf'
 
 // Models
 import User from './models/User'

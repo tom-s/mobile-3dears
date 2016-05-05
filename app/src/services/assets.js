@@ -1,6 +1,5 @@
 import ls from 'store'
-
-const ASSETS_URL = 'http://localhost:3000/public' // todo: put smoewhere safe
+import { ASSETS_URL } from 'config/conf'
 
 export const ASSET_TYPES = {
   'AUDIO': 'ASSET.AUDIO'

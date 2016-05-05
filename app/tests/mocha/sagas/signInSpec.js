@@ -1,5 +1,4 @@
 import 'babel-polyfill'
-
 import { call, put } from 'redux-saga/effects'
 import { push } from 'react-router-redux'
 import { SIGNIN_REQUEST, SIGNIN_ERROR, SIGNIN_SUCCESS } from '../../../src/actions/signIn'

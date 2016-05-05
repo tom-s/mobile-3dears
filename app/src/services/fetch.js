@@ -1,7 +1,7 @@
 import es6Promise from 'es6-promise'
 import fetch from 'isomorphic-fetch'
 import { contains } from 'ramda'
-import { API_URL } from '../../../config/conf'
+import { API_URL } from 'config/conf'
 import { getAuthToken } from './auth'
 
 es6Promise.polyfill() // activate polyfill

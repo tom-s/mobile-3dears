@@ -6,7 +6,7 @@ import bodyParser from 'koa-bodyparser'
 import serve from 'koa-static-folder'
 import passport from './auth'
 import mongoose from 'mongoose'
-import { SESSION_SECRET } from '../../config/conf' // todo
+import { SESSION_SECRET } from '../config/conf' // todo
 
 // Routes
 import publicRouter from './routes/public'

@@ -1,7 +1,7 @@
 import Router from 'koa-router'
 import passport from '../auth'
 import jwt from 'jsonwebtoken'
-import { TOKEN_SECRET, TOKEN_EXPIRE_DURATION } from '../../../config/conf'
+import { TOKEN_SECRET, TOKEN_EXPIRE_DURATION } from '../../config/conf'
 import shortid from 'shortid'
 import passwordHash from 'password-hash'
 import {sendEmailValidation} from '../services/mailer'
