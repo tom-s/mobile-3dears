@@ -1,20 +1,9 @@
 import { connect } from 'react-redux'
 import Training from '../../components/Training'
-import { TRAINING_TYPES, EXERCISE_REQUEST } from '../../actions/training'
-import { URL_ERROR } from '../../actions/url'
+import { EXERCISE_REQUEST } from '../../actions/training'
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-  const { params: { type }, location: { pathname } } = ownProps
-
-  // Redirect to dashboard if training type is not valid
-  if (!TRAINING_TYPES[type]) {
-    dispatch({
-      type: URL_ERROR,
-      payload: {
-        referer: pathname
-      }
-    })
-  }
+  const { params: { type } } = ownProps
 
   return {
     loadExercise: (type, id) => {

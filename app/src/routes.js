@@ -1,10 +1,9 @@
 import React from 'react'
 import { Route } from 'react-router'
 import App from './containers/App'
-import { getAuthToken } from './services/auth'
-import { SIGNIN_SUCCESS } from './actions/signIn'
-import { INIT_REQUEST } from './actions/init'
-import { Promise } from 'es6-promise'
+
+// Services
+import initRouter from './services/routing'
 
 // Pages
 import AboutPage from './containers/pages/About'
@@ -16,37 +15,10 @@ import SignInPage from './containers/pages/SignIn'
 import SignUpPage from './containers/pages/SignUp'
 import TrainingPage from './containers/pages/Training'
 import UrlErrorPage from './containers/pages/UrlError'
-import { URL_AUTH_ERROR } from './actions/url'
 
 export default(store) => {
 
-  const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms))
-
-  const loadAuth = () => {
-    const token = getAuthToken()
-    if (token) {
-      store.dispatch({ type: SIGNIN_SUCCESS, payload: token })
-      store.dispatch({ type: INIT_REQUEST, payload: null })
-    }
-    return delay(500)
-  }
-
-  const loginRequired = (nextState, replace, cb) => {
-    const checkAuth = () => {
-      const { auth:  { loggedIn } } = store.getState()
-      if (!loggedIn) {
-        store.dispatch({ type: URL_AUTH_ERROR })
-      }
-      cb()
-    }
-
-    const { auth: { loggedIn } } = store.getState()
-    if (!loggedIn) {
-      loadAuth().then(checkAuth)
-    } else {
-      checkAuth()
-    }
-  }
+  const { loadAuth, loginRequired, checkTraining } = initRouter(store)
 
   return (
     <Route path="" onEnter={loadAuth} component={App}>
@@ -57,7 +29,7 @@ export default(store) => {
       <Route path="/sign_up" component={SignUpPage} />
       <Route path="/validation" component={EmailValidationPage} />
       <Route path="/dashboard" onEnter={loginRequired} component={DashboardPage} />
-      <Route path="/training/:type/:exerciseId" component={TrainingPage} />
+      <Route path="/training/:type/:exerciseId" onEnter={checkTraining} component={TrainingPage} />
       <Route path="/404" component={UrlErrorPage}/>
       <Route path="*" component={UrlErrorPage}/>
     </Route>
