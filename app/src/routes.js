@@ -57,7 +57,8 @@ export default(store) => {
       <Route path="/sign_up" component={SignUpPage} />
       <Route path="/validation" component={EmailValidationPage} />
       <Route path="/dashboard" onEnter={loginRequired} component={DashboardPage} />
-      <Route path="/training/:type/:exerciseId" onEnter={loginRequired} component={TrainingPage} />
+      <Route path="/training/:type/:exerciseId" component={TrainingPage} />
+      <Route path="/404" component={UrlErrorPage}/>
       <Route path="*" component={UrlErrorPage}/>
     </Route>
   )

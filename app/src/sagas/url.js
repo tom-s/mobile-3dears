@@ -8,7 +8,7 @@ import { NOTIFY_ERROR } from '../actions/notification'
 export function * urlErrorSaga ({ payload }) {
   const { referer } = payload
   yield put({ type: URL_SAVE_REFERER, payload: referer })
-  yield put(push('/')) // redirect to sign in
+  yield put(push('/404'))
   yield put({ type: NOTIFY_ERROR, payload: 'This page does not exist, try to access another page' })
 }
 
@@ -24,7 +24,7 @@ function * watchUrlError () {
 }
 
 function * watchUrlAuthError () {
-  yield * takeEvery(URL_ERROR, urlAuthErrorSaga)
+  yield * takeEvery(URL_AUTH_ERROR, urlAuthErrorSaga)
 }
 
 function * watchUrl () {

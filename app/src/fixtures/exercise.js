@@ -1,24 +1,3 @@
-import { pipe, map, prop, flatten, uniq, propEq, find } from 'ramda'
-import { ASSET_TYPES } from '../services/assets'
-
-const allAssets = [
-  {
-    id: 'guitarLoop1',
-    url: 'guitarLoop1.wav',
-    type: ASSET_TYPES.AUDIO
-  },
-  { 
-    id: 'guitarLoop2',
-    url: 'guitarLoop2.wav',
-    type: ASSET_TYPES.AUDIO
-  },
-  {
-    id: 'pianoLoop1',
-    url: 'pianoLoop1.wav',
-    type: ASSET_TYPES.AUDIO
-  }
-]
-
 const question1 = {
   id: 1,
   question: 'Which sound is being compressed ? ',
@@ -76,27 +55,9 @@ const question2 = {
 }
 
 
-const questions = [
+const exercise = [
   question1,
   question2
 ]
-
-const findAsset = (assetId) => find(propEq('id', assetId))(allAssets) 
-
-const extractAssetsFromQuestions = pipe(
-  map(prop('sources')),
-  flatten,
-  map(prop('assetId')),
-  uniq,
-  map(findAsset)
-)
-
-// Extract exercise assets
-const assets = extractAssetsFromQuestions(questions)
-
-const exercise = {
-  assets,
-  questions
-}
 
 export default exercise

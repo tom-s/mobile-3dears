@@ -4,10 +4,12 @@ import { TRAINING_TYPES } from '../../actions/training'
 import { URL_ERROR } from '../../actions/url'
 
 const mapDispatchToProps = (dispatch, ownProps) => {
+  console.log('training page !')
   const { params: { type }, location: { pathname } } = ownProps
 
   // Redirect to dashboard if training type is not valid
   if (!TRAINING_TYPES[type]) {
+    console.log("dispatch !")
     dispatch({
       type: URL_ERROR,
       payload: {
