@@ -1,7 +1,7 @@
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import Growler from '../components/Growler'
-import * as growlerActionCreators from '../actions/growler'
+import Growler from 'components/common/Growler'
+import * as growlerActionCreators from 'actions/growler'
 
 const mapStateToProps = (state) => ({
   growler: state.growler

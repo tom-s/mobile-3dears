@@ -1,4 +1,4 @@
-import { GROWLER__HIDE, GROWLER__HIDED, GROWLER__SHOW } from '../actions/growler'
+import { GROWLER__HIDE, GROWLER__HIDED, GROWLER__SHOW } from 'actions/growler'
 
 const initialState = {
   text: '',

@@ -1,7 +1,7 @@
 import { call, put } from 'redux-saga/effects'
 import { takeEvery } from 'redux-saga'
-import { NOTIFY_SUCCESS, NOTIFY_ERROR } from '../actions/notification'
-import * as GrowlerActions from '../actions/growler'
+import { NOTIFY_SUCCESS, NOTIFY_ERROR } from 'actions/notification'
+import * as GrowlerActions from 'actions/growler'
 
 const notifySuccess = (msg) => GrowlerActions.showGrowlerSuccess(msg)
 const notifyError = (msg) => GrowlerActions.showGrowlerError(msg)

@@ -1,18 +1,22 @@
-import React from 'react'
-import classNames from 'classnames/bind'
+import React, { Component } from 'react'
+import GrowlerContent from './GrowlerContent'
 
-const Growler = ({growler, hideGrowler, message}) => {
-  const growlerClass = classNames('growler', growler.type, {
-    'growler--hiding': growler.status === 'hide',
-    'growler--hidden': growler.status === 'hidden'
-  })
+class Growler extends Component {
 
-  return (
-    <div className={growlerClass} onClick={(evt) => { evt.preventDefault(); hideGrowler(growler) }}>
-      <span className="icon {growler.icon}"></span>
-      {message}
-    </div>
-  )
+  getMessage () {
+    const lang = this.props.currentLocale || 'enUS'
+    let message = this.props.growler.text
+    if (this.props.messages && this.props.messages[lang]) {
+      return this.props.messages[lang][message] || message
+    }
+    return message
+  }
+
+  render () {
+    const message = this.getMessage()
+    this.props.hideTimeOutGrowler(this.props.growler, this.props.showFor)
+    return <GrowlerContent {...this.props} message={message} />
+  }
 }
 
 export default Growler
