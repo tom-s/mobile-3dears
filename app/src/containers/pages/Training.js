@@ -3,9 +3,14 @@ import Training from 'components/Training'
 
 const mapStateToProps = (state, ownProps) => {
   const { params: { exerciseId, type }} = ownProps
+  const exercise = null
+
   return {
-    exerciseId,
-    type
+    query: {
+      exerciseId,
+      type
+    },
+    exercise
   }
 }
 

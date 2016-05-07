@@ -1,9 +1,9 @@
 import React from 'react'
 import QueryExercise from 'containers/query/Exercise'
+import Exercise from 'components/Exercise'
 
 const Training = (props) => {
-  console.log("props", props)
-  const { exerciseId, type } = props
+  const { query : { exerciseId, type }, exercise } = props
 
   return (
     <section className="Training">
@@ -11,6 +11,7 @@ const Training = (props) => {
       <div className="container">
         Exercise ID: {exerciseId}
         Type: {type}
+        <Exercise exercise={exercise} />
       </div>
     </section>
   )

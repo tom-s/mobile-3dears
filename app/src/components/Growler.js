@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { Component } from 'react'
 import GrowlerContent from './common/Growler'
 
-class Growler extends React.Component {
+class Growler extends Component {
 
   getMessage () {
     const lang = this.props.currentLocale || 'enUS'

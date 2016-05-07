@@ -1,6 +1,6 @@
-import React from 'react'
+import React, {Component} from 'react'
 
-class Validation extends React.Component {
+class Validation extends Component {
   render () {
     return (
       <section className="Validation">
