@@ -1,26 +1,20 @@
-import React, { Component } from 'react'
+import React from 'react'
+import QueryExercise from 'containers/query/Exercise'
 
-class Training extends Component {
-  constructor (props) {
-    super(props)
-  }
+const Training = (props) => {
+  console.log("props", props)
+  const { exerciseId, type } = props
 
-  componentDidMount() {
-    const { exerciseId, type, loadExercise } = this.props
-    loadExercise(type, exerciseId)
-  }
-
-  render() {
-    const { type } = this.props
-
-    return (
-      <section className="Training">
-        <div className="container">
-          { type }
-        </div>
-      </section>
-    )
-  }
+  return (
+    <section className="Training">
+      <QueryExercise id={exerciseId} type={type} />
+      <div className="container">
+        Exercise ID: {exerciseId}
+        Type: {type}
+      </div>
+    </section>
+  )
 }
+
 
 export default Training
