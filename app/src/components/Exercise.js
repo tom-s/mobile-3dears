@@ -11,7 +11,7 @@ const Exercise = (props) => {
 
   switch (type) {
     case EXERCISE_TYPES.test:
-      break;
+      break
     default:
       exerciseComponent = <NoExercise />
   }
