@@ -1,9 +1,9 @@
 {
-   "name": "Reapp Simple",
+   "name": "Mobile ears",
    "xwalk_app_version": "0.1",
    "xwalk_target_platforms": [ "android" ],
    "start_url": "index.html",
-   "xwalk_package_id": "com.reapp.simple",
+   "xwalk_package_id": "com.xwalk.simple",
    "icons": [
      {
          "src": "icon.png",

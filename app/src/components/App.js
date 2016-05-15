@@ -38,7 +38,17 @@ class App extends Component {
         </SplitterSide>
         <SplitterContent>
           <Page>
-            <Button onClick={::this.openSide}>Open</Button>
+            <div className='navigation-bar'>
+              <div className='navigation-bar__left'>
+                <span className='toolbar-button--quiet navigation-bar__line-height'>
+                  <i className='zmdi zmdi-menu' onClick={::this.openSide}></i>
+                </span>
+              </div>
+              <div className='navigation-bar__center'>
+                Navigation Bar
+              </div>
+            </div>
+            {children}
           </Page>
         </SplitterContent>
       </Splitter>
