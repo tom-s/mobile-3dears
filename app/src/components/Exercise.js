@@ -29,7 +29,7 @@ const Exercise = (props) => {
   }
 
   return (
-    <div className="Exercise">
+    <div className='Exercise'>
       {exerciseComponent}
     </div>
   )

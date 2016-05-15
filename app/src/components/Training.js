@@ -6,9 +6,9 @@ const Training = (props) => {
   const { query : { exerciseId, type }, exercise } = props
 
   return (
-    <section className="Training">
+    <section className='Training'>
       <QueryExercise id={exerciseId} type={type} />
-      <div className="container">
+      <div className='container'>
         Exercise ID: {exerciseId}
         Type: {type}
         <Exercise exercise={exercise} />

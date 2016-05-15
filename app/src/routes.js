@@ -16,12 +16,12 @@ export default(store) => {
   const { loadAuth, loginRequired, checkTraining } = initRouter(store)
 
   return (
-    <Route path="" onEnter={loadAuth} component={App}>
-      <Route path="/" component={HomePage} />
-      <Route path="/about" component={AboutPage} />
-      <Route path="/training/:type/:exerciseId" onEnter={checkTraining} component={TrainingPage} />
-      <Route path="/404" component={UrlErrorPage}/>
-      <Route path="*" component={UrlErrorPage}/>
+    <Route path='' onEnter={loadAuth} component={App}>
+      <Route path='/' component={HomePage} />
+      <Route path='/about' component={AboutPage} />
+      <Route path='/training/:type/:exerciseId' onEnter={checkTraining} component={TrainingPage} />
+      <Route path='/404' component={UrlErrorPage}/>
+      <Route path='*' component={UrlErrorPage}/>
     </Route>
   )
 }
