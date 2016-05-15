@@ -1,23 +1,2 @@
 @import './variables';
 @import './app';
-
-/* Common components */
-@import './header';
-@import './footer';
-@import './notification';
-
-/* Components */
-@import './pricing';
-@import './signIn';
-@import './signUp';
-
-/* Override default buttons */
-.Root .btn {
-  font-weight: 600;
-  transition: 0.2s ease-in-out;
-  color: #FFF;
-  font-size: 14px;
-  width: 240px;
-  height: 40px;
-  border-radius: 10px;
-}

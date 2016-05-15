@@ -1,5 +1,5 @@
+/*
 import exercise from '../fixtures/exercise' // fake exercise
-import assets from '../fixtures/assets'
 import { pipe, map, prop, flatten, uniq, propEq, find } from 'ramda'
 
 const findAsset = (assetId) => find(propEq('id', assetId))(assets)
@@ -19,4 +19,4 @@ export const getExercise = () => {
     assets,
     exercise
   }
-}
+}*/

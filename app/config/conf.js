@@ -9,6 +9,5 @@ const cfg = (env === 'production')
   : (env === 'test') ? test : development
 
 // Export conf variables
-export const API_URL = cfg.API_URL
 export const ASSETS_URL = cfg.ASSETS_URL
 

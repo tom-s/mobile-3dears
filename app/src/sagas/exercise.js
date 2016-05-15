@@ -2,15 +2,11 @@ import { call, put } from 'redux-saga/effects'
 import { takeEvery } from 'redux-saga'
 import { EXERCISE_LOAD_REQUEST, EXERCISE_LOAD_SUCCESS, EXERCISE_LOAD_ERROR } from 'actions/training'
 import { getExercise } from 'services/exerciseFactory'
-import { loadAssets } from 'services/assets'
 
 export function * exerciseLoadSaga ({ payload }) {
   try {
     // Fetch exercise
     const { assets, exercise } = getExercise()
-    console.log('loaded assets and exercise', assets, exercise)
-    // Load assets
-    const loadedAssets = yield loadAssets(assets)
     console.log("loaded assets", assets)
   } catch (e) {
     console.log("error", e)
