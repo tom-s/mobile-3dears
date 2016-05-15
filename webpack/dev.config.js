@@ -10,7 +10,7 @@ const DIST_PATH = path.join(__dirname, '../dist')
 const NODE_MODULES_PATH = path.join(ROOT_PATH, '../node_modules')
 
 module.exports = {
-  devtool: 'cheap-source-map',//'cheap-eval-source-map',
+  devtool: 'cheap-eval-source-map',
   entry: {
     'main': [
       'babel-polyfill',

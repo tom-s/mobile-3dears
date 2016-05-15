@@ -1,4 +1,6 @@
 import React from 'react'
+import 'onsenui'
+import {Page, Button} from 'react-onsenui'
 
 // Style
 import 'assets/styles/main.scss'
@@ -10,7 +12,10 @@ const App = (props) => {
 
   return (
     <div className="App">
-      {children}
+      <Page>
+        {children}
+         <Button>Tap me!</Button>
+     </Page>
     </div>
   )
 }
