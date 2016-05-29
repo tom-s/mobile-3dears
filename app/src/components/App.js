@@ -1,13 +1,15 @@
 import React, {Component} from 'react'
 import 'onsenui'
-import { Page, Button, Splitter, SplitterSide, SplitterContent, Toolbar } from 'react-onsenui'
+import {
+  Page, Button, Splitter, SplitterSide, SplitterContent, Toolbar,
+  List, ListHeader, ListItem, Navigator, Ripple
+} from 'react-onsenui'
 
 // Style
 import 'assets/styles/main.scss'
 
 // Components
-
-class App extends Component {
+class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -18,9 +20,17 @@ class App extends Component {
   }
 
   render() {
-    const { children } = this.props
+    return (
+      <Navigator
+        initialRoute={{title: 'Home', id: 'home'}}
+        animation='slide'
+        renderPage={this.renderPage.bind(this)}
+      />
+    )
+  }
+
+  renderPage(route, navigator) {
     const { side: {isOpen} } = this.state
-    console.log('isopen', isOpen)
 
     return (
       <Splitter>
@@ -34,6 +44,14 @@ class App extends Component {
           className='Side'>
           <Page>
             Menu content
+             <List
+              dataSource={[{ title: 'Exercise', id: 'exercise'}]}
+              renderRow={(row, idx) => (
+                <ListItem key={idx}>
+                  <Button modifier='outline' ripple onClick={this.changeRoute.bind(this, navigator, row)}> {row.title} </Button>
+                </ListItem>
+              )}
+            />
           </Page>
         </SplitterSide>
         <SplitterContent>
@@ -45,17 +63,24 @@ class App extends Component {
                 </span>
               </div>
               <div className='navigation-bar__center'>
-                Navigation Bar
+                {route.title}
               </div>
             </div>
-            {children}
           </Page>
         </SplitterContent>
       </Splitter>
+
     )
   }
 
-  openSide() {
+  componentDidMount() {
+    this.openSide()
+  }
+  changeRoute(navigator, route) {
+    navigator.pushPage(route)
+  }
+
+   openSide() {
     const { side } = this.state
     side.isOpen = true
     this.setState({
